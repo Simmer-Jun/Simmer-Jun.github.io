@@ -1,0 +1,225 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>JavaScript 克隆 | Simmer</title>
+  <meta name="author" content="Simmer">
+  
+  <meta name="description" content="前端工程师-Simmer的博客">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="JavaScript 克隆"/>
+  <meta property="og:site_name" content="Simmer"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/images/favicon.jpg" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Simmer" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div id="header-cont">
+    <div class="alignleft">
+      <h1><a href="http://www.hisimmer.com/">司马</a></h1>
+      <h2><a href="http://www.hisimmer.com/">普通人，只会读书，锻炼，写代码。</a></h2>
+    </div>
+    <nav id="main-nav" class="alignright">
+      <ul>
+        
+          <li><a href="http://www.hisimmer.com/">Home</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+          <li><a href="/archives">Archives</a></li>
+        
+          <li><a href="/2015/03/01/other/work/">作品集</a></li>
+        
+          <li><a href="http://simmer.sinaapp.com/about/index.html">在线简历</a></li>
+        
+          <li><a href="http://simmer-jun.github.io/BKFE/index.html">gitbook</a></li>
+        
+      </ul>
+      <div class="clearfix"></div>
+    </nav>
+    <div class="clearfix"></div>
+</div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <time datetime="2015-04-19T12:20:59.000Z"><a href="/2015/04/19/javascript/jsclone/">2015-04-19</a></time>
+      
+      
+  
+    <h1 class="title">JavaScript 克隆</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h3 id="写在前面">写在前面</h3><p>最近加入了百度前端学院，为期2个月的时间里，我会把自己遇到的一些问题都贴出来，供自己回头复习，也和大家一起进步。<br>百度前端学院<a href="https://github.com/baidu-ife/ife" target="_blank" rel="external">github地址</a>大家可以一起学习~<br>今天先和大家分享下几篇不错的博客(据说很大一部分是百度每周内部分享哦)：<br><a href="http://www.ibm.com/developerworks/cn/web/1308_caiys_jsload/index.html" target="_blank" rel="external">JavaScript 的性能优化：加载和执行</a><br><a href="https://scotch.io/tutorials/a-visual-guide-to-css3-flexbox-properties" target="_blank" rel="external">说说 flexbox</a><br><a href="http://www.w3cplus.com/css3/a-visual-guide-to-css3-flexbox-properties.html" target="_blank" rel="external">这是中文版”说说 flexbox”</a><br><a href="http://blogs.msdn.com/b/ie/archive/2015/04/02/introducing-the-ie-diagnostics-adapter-for-third-party-developer-tools.aspx" target="_blank" rel="external">在chrome的调试器里调ie</a><br><a href="https://www.ijser.cn/https-everything-you-should-know/" target="_blank" rel="external">关于HTTPS的一篇入门讲解</a><br><a href="http://es6-features.org/" target="_blank" rel="external">ECMAScript 6: Feature Overview and Comparison</a><br><a href="http://zhuanlan.zhihu.com/FrontendMagazine/20002850" target="_blank" rel="external">2015前端[JS]工程师必知必会</a><br><a href="https://github.com/cliffcrosland/black-hole.js" target="_blank" rel="external">用 JS 实现宇宙黑洞的效果(炫酷叼炸天)</a></p>
+<h3 id="下面进入正题">下面进入正题</h3><p>以下内容有参考，参考博文为<a href="http://qianduanblog.com/post/js-learning-30-object-clone-copy.html" target="_blank" rel="external">这个</a>还有<a href="http://www.cnblogs.com/ForFreeDom/archive/2010/03/24/1693547.html" target="_blank" rel="external">这个</a><br>很多时候我们都会需要去克隆对象啊，数组之类的，但是呢又不能让克隆的对象去改变原对象，所以就需要去深度克隆，也就是克隆对象与原对象不是对同一个对象的引用。以下看code<br><a id="more"></a><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*-------------判断fn是否为一个数组，返回一个bool值------*/</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isFunction</span>(<span class="params">fn</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> (fn <span class="keyword">instanceof</span> <span class="built_in">Function</span>) </span><br><span class="line">&#125; </span><br><span class="line"><span class="keyword">var</span> bb = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line"><span class="comment">//alert(isFunction(bb));//true</span></span><br><span class="line"><span class="comment">/*-------------判断reg是否为正则表达式，返回一个bool值------*/</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isReg</span>(<span class="params">reg</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> (reg <span class="keyword">instanceof</span> <span class="built_in">RegExp</span>) </span><br><span class="line">&#125; </span><br><span class="line"><span class="keyword">var</span> cc = <span class="regexp">/n/g</span>;</span><br><span class="line"><span class="comment">//alert(isReg(cc));//true</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*-------------</span><br><span class="line">使用递归来实现一个深度克隆，可以复制一个目标对象，返回一个完整拷贝.被复制的对象类型会被限制为数字、字符串、布尔、日期、数组、Object对象。不会包含函数、正则对象等------*/</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">cloneObject</span>(<span class="params">src</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> o,i,j;</span><br><span class="line">	<span class="keyword">if</span>(src===(<span class="literal">null</span> || <span class="literal">undefined</span>)) <span class="keyword">return</span> o=<span class="string">"null or undefined!"</span>;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(isFunction(src) || isReg(src))&#123;</span><br><span class="line">		<span class="keyword">return</span> o=<span class="string">"function or RegExp"</span>;</span><br><span class="line">	&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">if</span>(<span class="keyword">typeof</span>(src)!=<span class="string">"object"</span>) &#123;</span><br><span class="line">			<span class="keyword">return</span> src;</span><br><span class="line">		&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">if</span>(src <span class="keyword">instanceof</span> (<span class="built_in">Array</span>))&#123;</span><br><span class="line">				o=[];</span><br><span class="line">				j=src.length;</span><br><span class="line">				<span class="keyword">for</span>(i=<span class="number">0</span>;i &lt; j;i++)&#123;</span><br><span class="line">					<span class="keyword">if</span>(<span class="keyword">typeof</span>(src[i])==<span class="string">"object"</span> &amp;&amp; src!=<span class="literal">null</span>)&#123;</span><br><span class="line">						o[i]=<span class="built_in">arguments</span>.callee(src[i]);</span><br><span class="line">					&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">						o[i]=src[i];</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> &#123;</span><br><span class="line">				o=&#123;&#125;;</span><br><span class="line">				<span class="keyword">for</span>(i <span class="keyword">in</span> src)&#123;</span><br><span class="line">					<span class="keyword">if</span>(<span class="keyword">typeof</span>(src[i])==<span class="string">"object"</span> &amp;&amp; src!=<span class="literal">null</span>)&#123;</span><br><span class="line">						o[i]=<span class="built_in">arguments</span>.callee(src[i]);</span><br><span class="line">					&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">						o[i]=src[i];</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> o;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line"><span class="keyword">var</span> b=<span class="regexp">/n/g</span>;</span><br><span class="line"><span class="keyword">var</span> c=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="keyword">var</span> d=<span class="literal">false</span>;</span><br><span class="line"><span class="keyword">var</span> e = &#123;name:<span class="string">"xu shu jun"</span>,age:<span class="number">23</span>,anathormen:&#123;name:<span class="string">"xu shu jun"</span>,age:<span class="number">23</span>&#125;&#125;;</span><br><span class="line"><span class="keyword">var</span> g = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line"><span class="comment">//alert(cloneObject(a));false</span></span><br><span class="line"><span class="comment">//alert(cloneObject(b));false</span></span><br><span class="line"><span class="comment">//alert(cloneObject(c));1,2,3</span></span><br><span class="line"><span class="comment">//alert(cloneObject(d));false</span></span><br><span class="line"><span class="keyword">var</span> f=cloneObject(e);</span><br><span class="line">f[<span class="string">"name"</span>]=<span class="string">"simmer"</span>;<span class="comment">//使用[]引用属性的时候要注意加上那个引号</span></span><br><span class="line"><span class="built_in">console</span>.log(f);<span class="comment">//&#123;name:"simmer",age:23,anathormen:&#123;name:"xu shu jun",age:23&#125;&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(e);<span class="comment">//&#123;name:"xu shu jun",age:23,anathormen:&#123;name:"xu shu jun",age:23&#125;&#125;</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/JavaScript/">JavaScript</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/js基础/">js基础</a>
+  </div>
+
+        
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+<section id="comment">
+  <h1 class="title">留言</h1>
+  <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="/2015/04/19/javascript/jsclone/" data-title="JavaScript 克隆" data-url="http://www.hisimmer.com/2015/04/19/javascript/jsclone/"></div>
+    <!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"simmer"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共JS代码 end -->
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Google一下">
+    <input type="hidden" name="q" value="site:www.hisimmer.com">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/JavaScript/">JavaScript</a><small>9</small></li>
+  
+    <li><a href="/categories/css/">css</a><small>3</small></li>
+  
+    <li><a href="/categories/日记/">日记</a><small>2</small></li>
+  
+    <li><a href="/categories/项目/">项目</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  <div class="friendly-link">
+<h3>码农圈:</h3>
+    <ul>
+        <li><a href="http://zhangwenli.com/blog" title="羡辙杂俎">羡辙杂俎</a></li>
+        <li><a href="http://helen123.gitcafe.io/" title="Bicycle's Blog">Bicycle</a></li>
+        <li><a href="http://www.iyuxy.com/" target="_blank" title="喻小佑's Blog">喻小佑</a></li>
+        <li><a href="http://gaohaoyang.github.io/about/" target="_blank" title="Hyg's Blog">Hyg</a></li>
+        <li><a href="http://www.anotherhome.net/" target="_blank" title="Anotherhome">Anotherhome</a></li>
+        <li><a href="http://halamyc.me/" target="_blank" title="halamyc's blog">HalaMyc</a></li>
+        <li><a href="http://iflsy.com/pgy/" target="_blank" title="彭光宇's blog">彭光宇</a></li>
+        <li><a href="http://www.xheldon.com/" target="_blank" title="Xheldon's blog">Xheldon</a></li>
+        <li><a href="https://ymr.me/" target="_blank" title="ymr's blog">ymr</a></li>
+    </ul> 
+    <p>欢迎交换友链~</p>
+</div>
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="footer"><div class="foot-container">
+    <div class="alignleft alignleft-2">
+     <h2 class="foot-h2">Where to study?</h2>
+     <p ><a href="http://www.w3ctech.com/">w3cTech</a>|<a href="http://www.imooc.com/">imooc</a>|<a href="https://www.github.com/">GitHub</a></p>
+     <p ><a href="http://ued.taobao.org/blog/">淘宝UED</a>|<a href="http://fex.baidu.com/">百度FEX</a></p>
+    </div>
+    <div class="alignleft alignleft-2">
+        <h2 class="foot-h2">Have problem？</h2>
+        <p ><a href="http://stackoverflow.com/">StackOverflow</a>|<a href="http://segmentfault.com/">SegmentFault</a>
+    </div>
+    <div class="alignleft alignleft-2">
+        <h2 class="foot-h2">Focus on</h2>
+        <p ><a href="https://facebook.github.io/react/">React</a>|<a href="https://facebook.github.io/flux/">Flux</a>
+    </div>
+    <div class="foot-foot">
+        
+      <p>由<a href="https://hexo.io" title="hexo">hexo</a>强力驱动 || 感谢<a href="https://gitcafe.com/">GitCafe</a>提供主机</p>
+      <p><span id="busuanzi_container_site_uv">
+      欢迎！第<span id="busuanzi_value_site_uv"></span> 位来访的小伙伴!
+    </span></p>
+    <p>&copy; 2015 Simmer</p>
+      
+    </div>
+    </div>
+    <div class="clearfix"></div>
+    
+</div>
+<div id="go-pg-top" style="display: block; opacity: 0.6;" title="返回顶部"><i class="icon-arrow-up"></i></div>
+</footer>
+  <script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+</body>
+</html>

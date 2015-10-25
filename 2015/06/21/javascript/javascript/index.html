@@ -1,0 +1,343 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>JavaScript深入浅出（持续更新中） | Simmer</title>
+  <meta name="author" content="Simmer">
+  
+  <meta name="description" content="前端工程师-Simmer的博客">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="JavaScript深入浅出（持续更新中）"/>
+  <meta property="og:site_name" content="Simmer"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/images/favicon.jpg" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Simmer" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div id="header-cont">
+    <div class="alignleft">
+      <h1><a href="http://www.hisimmer.com/">司马</a></h1>
+      <h2><a href="http://www.hisimmer.com/">普通人，只会读书，锻炼，写代码。</a></h2>
+    </div>
+    <nav id="main-nav" class="alignright">
+      <ul>
+        
+          <li><a href="http://www.hisimmer.com/">Home</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+          <li><a href="/archives">Archives</a></li>
+        
+          <li><a href="/2015/03/01/other/work/">作品集</a></li>
+        
+          <li><a href="http://simmer.sinaapp.com/about/index.html">在线简历</a></li>
+        
+          <li><a href="http://simmer-jun.github.io/BKFE/index.html">gitbook</a></li>
+        
+      </ul>
+      <div class="clearfix"></div>
+    </nav>
+    <div class="clearfix"></div>
+</div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <time datetime="2015-06-21T13:20:55.000Z"><a href="/2015/06/21/javascript/javascript/">2015-06-21</a></time>
+      
+      
+  
+    <h1 class="title">JavaScript深入浅出（持续更新中）</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="一些说明">一些说明</h2><p>这篇文章记录的是我学习javascrpt基础的一些笔记。你可以发Email至:_xushujun<em>sunny@163.com</em> 指出我的错误，希望能和有兴趣的童鞋一起进步~<br><a id="more"></a> </p>
+<h2 id="目录">目录</h2><ul>
+<li><a href="#p1">基本数据类型</a></li>
+<li><a href="#p2">表达式和运算符</a></li>
+<li><a href="#p3">语句</a></li>
+<li><a href="#p4">对象</a></li>
+<li><a href="#p5">数组</a></li>
+<li><a href="#p6">函数和作用域</a></li>
+<li><a href="#p7">闭包</a></li>
+<li><a href="#p8">DOM</a></li>
+<li><a href="#p9">BOM</a></li>
+<li><a href="#p10">Ajax</a></li>
+</ul>
+<p>参考目录:<a href="http://www.imooc.com/learn/277" target="_blank" rel="external">慕课网-深入浅出JavaScript</a></p>
+<h2 id="p1">第一章 基本数据类型</h2><br>等待更新<br><h2 id="p2">第二章 表达式和运算符</h2><br>等待更新<br><h2 id="p3">第三章 语句</h2><br>等待更新<br><h2 id="p4">第四章 对象</h2>
+
+<h3 id="对象基础">对象基础</h3><p>对象是JavaScript的基本数据类型。对象可以看作是属性的无序集合，每个属性都是一个名/值对。属性名是字符串，因此可以把对象看成是从字符串到值的映射。<br>除了名字和值之外，每个属性还有一些与之相关的特性，称为”熟悉特性”（property attribute）:</p>
+<ul>
+<li>可写（writable attribute），表明是否可以设置该属性的值。</li>
+<li>可枚举（enumerable attribute），表明是否可以通过for/in循环返回该属性</li>
+<li>可配置（configurable attribute），表明是否可以删除或修改该属性。</li>
+</ul>
+<p>在ECMAScript5之后，对象还拥有三个相关的对象特性:</p>
+<ul>
+<li>对象的原型（prototype）指向另外一个对象，本对象的属性继承自它的原型对象。</li>
+<li>对象的类（class）是一个标识对象类型的字符串。</li>
+<li>对象的扩展标记（extensible flag）指明了（在ECMAScript5中）是否能向该对象添加新属性。</li>
+</ul>
+<h3 id="原型">原型</h3><p>所有通过对象字面量形式创建的对象都具有一个原型对象，可以通过Object.prototype获得对原型对象的引用。<br>通过关键字new和构造函数调用创建的对象的原型就是构造函数的prototype属性的值。所以有：</p>
+<ol>
+<li>new Array()创建的对象的原型就是Array.prototype，而Array.prototype的属性又继承于Object.prototype。这一系列的对象就是所谓的原型链（prototype chain）</li>
+<li>new Date()创建的对象的原型就是Date.prototype，而Date.prototype的属性又继承于Object.prototype。</li>
+<li>Object.prototype是为数不多的没有原型的对象之一。</li>
+</ol>
+<h3 id="关于对象的继承/原型链">关于对象的继承/原型链</h3><p>请看以下代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> my = &#123;name:<span class="string">"simmer"</span>,from:<span class="string">"Nan Chang"</span>,school:<span class="string">"ECJTU"</span>&#125;;</span><br><span class="line">	<span class="built_in">console</span>.log(my);<span class="comment">// Object &#123;name: "simmer", from: "Nan Chang", school: "ECJTU"&#125;</span></span><br><span class="line">	<span class="comment">//alert(my);</span></span><br><span class="line">&#125;</span><br><span class="line">foo.prototype.z = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;<span class="comment">// 在函数foo的原型链上添加方法z</span></span><br><span class="line">	<span class="comment">//console.log(typeof(this));</span></span><br><span class="line">	<span class="built_in">console</span>.log(foo.prototype);<span class="comment">// foo &#123;z: function, a: "hi javascript"&#125;</span></span><br><span class="line">	<span class="built_in">console</span>.log(<span class="keyword">this</span>);<span class="comment">// foo &#123;z: function, a: "hi javascript"&#125;  说明this指代的就是foo.prototype</span></span><br><span class="line">&#125;</span><br><span class="line">foo.prototype.a = <span class="string">"hi javascript"</span> ;<span class="comment">// 在函数foo的原型链上添加属性a</span></span><br><span class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> foo(); <span class="comment">// obj的构造器原型是foo，所以obj.prototype指向的是foo.prototype</span></span><br><span class="line">obj.z();  <span class="comment">//所以在foo.prototype 这个原型链上创建的属性或方法会被obj继承。</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'z'</span> <span class="keyword">in</span> obj); <span class="comment">// true 说明in操作符左边的属性/方法是右边对象自有属性/方法也可能是继承而来的属性/方法	</span></span><br><span class="line"><span class="built_in">console</span>.log(obj.hasOwnProperty(<span class="string">'z'</span>)); <span class="comment">// false 使用hasOwnProperty()方法可以判断是对象自有属性还是继承而来的属性</span></span><br><span class="line"><span class="built_in">console</span>.log(obj.a);<span class="comment">// "hi javascript"</span></span><br><span class="line">obj.a = <span class="string">"hello world"</span>; <span class="comment">// 对象赋值与查找不同</span></span><br><span class="line"><span class="built_in">console</span>.log(obj.hasOwnProperty(<span class="string">'a'</span>)); <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(obj.a);<span class="comment">// "hello world"</span></span><br><span class="line"><span class="keyword">delete</span> obj.a;<span class="comment">// true 成功删除对象上的属性</span></span><br><span class="line"><span class="built_in">console</span>.log(obj.a); <span class="comment">// "hi javascript" 但是不会影响对象原型链删上的属性</span></span><br></pre></td></tr></table></figure>
+<p>可以看到： </p>
+<ul>
+<li>对象是基于原型链来继承属性/方法的。</li>
+<li>在对象上查找属性和设置属性(给属性赋值)有一些不同：在对象上查找属性的时候，首先会查找对象内自己定义的属性/方法，当没有找到时会尝试去寻找对象上的原型链上是否存在要找的属性/方法，当依旧没有找到时如果对象的原型链继承自另一个对象，将会继续在那个对象的原型链上查找。如此往复直到对象的原型的原型*N是null，依旧没有找到这个属性/方法，则会返回错误。而在给对象设置属性/方法的时候，仅仅会查看对象上是否有同名属性/方法，有的话则将其值覆盖，没有的话就在对象上创建这个属性/方法。也就是给对象属性/方法赋值的时候不会去向上去查找原型链，只有在查找属性/方法时候才会去访问对象的原型链。</li>
+<li>对象上属性/方法的删除不影响原型链上的同名属性/方法。</li>
+<li>字面量创建的对象的原型链是Object.prototyp。</li>
+<li>可以使用Object.creat()方法去创建对象，它接收一个参数，是Object.creat()方法继承的对象。</li>
+<li>可以使用Object.creat(null)的方法去创建一个空对象，这个对象将不继承任何属性/方法。</li>
+<li><p>可以使用Object.creat(Object.prototype)的方法去创建一个对象，这个对象和使用<code>var obj = {}</code>创建的的对象一样。（因为使用字面量创建的对象的原型链也继承自Object.protype）</p>
+<h3 id="属性访问">属性访问</h3><p>我们可以像这样<code>obj.att</code>和这样<code>obj[att]</code>去访问一个对象上的属性，一些情况使用后面的访问方法较方便，这样访问属性的好处是<code>att</code>（属性名）是字符串形式，而字符串是JavaScript基本类型，我们就可以灵活的对属性名进行赋值，像这样：</p>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> addr = <span class="string">""</span>;</span><br><span class="line"><span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++ ) &#123;</span><br><span class="line">	addr += customer[<span class="string">"address"</span> + i] + <span class="string">'\n'</span>;</span><br><span class="line">	&#125; </span><br><span class="line"><span class="comment">//这段代码读取customer对象的adress0,adress1,adress2,adress3并把他们连接起来</span></span><br></pre></td></tr></table></figure>
+<h3 id="删除属性">删除属性</h3><p>delete运算符可以删除对象的属性。这里需要注意的是delete只是断开了属性和宿主的联系，而不会去操作属性中的属性。见以下例子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;one:&#123;name:<span class="string">"simmer"</span>&#125;,two:&#123;from:<span class="string">"ecjtu"</span>&#125;&#125;;</span><br><span class="line"><span class="keyword">var</span> p = a.one;<span class="comment">// 现在p指向a对象的one属性</span></span><br><span class="line"><span class="built_in">console</span>.log( <span class="keyword">delete</span> a.one);<span class="comment">// true 删除成功</span></span><br><span class="line"><span class="built_in">console</span>.log(a.one);<span class="comment">// undefined</span></span><br><span class="line"><span class="built_in">console</span>.log(p.name);<span class="comment">// 'simmer' 可以看出a的one属性只是从对象a上剥离，但是one属性的引用依旧存在，</span></span><br><span class="line"><span class="comment">//因此在JavaScript的某些实现中，可能会因为这种不严谨的代码而造成内存泄露。</span></span><br><span class="line"><span class="comment">//所以在销毁对象的时候要遍历对象中的属性，依次删除。</span></span><br></pre></td></tr></table></figure>
+<p>delete运算符只能删除自有属性，不能删除继承属性（要删除的话只能从定义这个属性的原型对象上删除它，并且注意这会影响到所有继承自这个原型对象的对象）。</p>
+<h3 id="属性检测">属性检测</h3><p>有四个方法去判断某个属性是否存在于某个对象里。</p>
+<ul>
+<li>第一种：in</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> o = &#123; x: <span class="number">1</span>&#125;;</span><br><span class="line"><span class="string">"x"</span> <span class="keyword">in</span> o;<span class="comment">// true 'x'是o的属性</span></span><br><span class="line"><span class="string">"y"</span> <span class="keyword">in</span> o;<span class="comment">// false 'y'不是o的属性</span></span><br><span class="line"><span class="string">'toString'</span> <span class="keyword">in</span> o;<span class="comment">// true o继承了toString属性</span></span><br></pre></td></tr></table></figure>
+<p>有一种情况只能使用in运算符而不能使用下述属性访问方式。<br>in可以区分不存在的属性和存在但是值为undefined的属性。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> o = &#123;name:<span class="literal">undefined</span>&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(o.name !== <span class="literal">undefined</span>); <span class="comment">// false o有属性name,其值为undefined</span></span><br><span class="line"><span class="built_in">console</span>.log(o.toString !== <span class="literal">undefined</span>); <span class="comment">// true o有属性(方法)toString</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'name'</span> <span class="keyword">in</span> o);<span class="comment">// true o有属性'name'</span></span><br><span class="line"><span class="keyword">delete</span> o.name <span class="comment">// true 删除成功</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'name'</span> <span class="keyword">in</span> o);<span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>第二种：hasOwnProperty( )</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> o = &#123; x: <span class="number">1</span>&#125;;</span><br><span class="line">o.hasOwnProperty(<span class="string">'x'</span>);<span class="comment">// true o有一个自有属性'x'</span></span><br><span class="line">o.hasOwnProperty(<span class="string">'y'</span>);<span class="comment">// false o中没有属性'y'</span></span><br><span class="line">o.hasOwnProperty(<span class="string">'toString'</span>);<span class="comment">// false toString不是o的自有属性</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>第三种：propertyIsEnumerable( )<br>propertyIsEnumerable( )是hasOwnproperty( )的加强版，只有检测到是自有属性并且是可枚举的时候才返回true</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> o = &#123;name:<span class="string">'simmer'</span>,schoole:<span class="string">'ecjtu'</span>&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(o.propertyIsEnumerable(<span class="string">'name'</span>)); <span class="comment">// true 'name'是O的自有属性并且可以枚举</span></span><br><span class="line"><span class="built_in">console</span>.log(o.propertyIsEnumerable(<span class="string">'toString'</span>));<span class="comment">//false 不可枚举</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>第四种：!==<br>可以使用’!==’判断一个属性是否是undefined。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> o = &#123;name:<span class="string">'simmer'</span>,schoole:<span class="string">'ecjtu'</span>&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(o.name !== <span class="literal">undefined</span>); <span class="comment">// true o有属性name</span></span><br><span class="line"><span class="built_in">console</span>.log(o.toString !== <span class="literal">undefined</span>); <span class="comment">// true o有属性(方法)toString</span></span><br></pre></td></tr></table></figure>
+<h4 id="注意">注意</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> o = &#123;name:<span class="string">"simmer"</span>&#125;;</span><br><span class="line"><span class="comment">//console.log(o.toString = function () &#123;alert('welcome')&#125;); // true o有属性(方法)toString</span></span><br><span class="line"><span class="built_in">console</span>.log(o.toString);<span class="comment">// function toString() &#123; [native code] &#125;</span></span><br></pre></td></tr></table></figure>
+<p>可以修改继承的属性/方法 (IE下覆盖toString等继承属性不会被 for in 到 需要注意)<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vvar o = &#123;name:<span class="string">"simmer"</span>&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(o.toString = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;alert(<span class="string">'welcome'</span>)&#125;); <span class="comment">// true o有属性(方法)toString</span></span><br><span class="line"><span class="built_in">console</span>.log(o.toString);<span class="comment">// function () &#123;alert('welcome')&#125;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="属性访问错误">属性访问错误</h3><p>有以下几种情况给对象o设置属性p会失败</p>
+<ul>
+<li>o中的属性P是只读的：不能给只读的属性赋值（defineProperty()方法中有一个例外）。</li>
+<li>o中的属性p是继承属性，并且是只读的：不能通过同名自有的属性覆盖只读的继承属性。</li>
+<li>o中不存在自有属性p，O没有使用setter方法继承属性p，并且o的可扩展（extensible flag）性为false。</li>
+</ul>
+<h2 id="p5">第五章 数组</h2>
+
+<p>对于JavaScript的数组，我们能想到的时什么？</p>
+<p>是类型的引用，有各种特定的方法与属性，可以使用字面量和构造器来构造。</p>
+<p>关于构造器与原型链还有闭包等见第6/7章（等待更新）</p>
+<p>下面就数组的属性与方法进行讲解：</p>
+<h3 id="属性">属性</h3><ul>
+<li>constructor 制定创建对象的原型函数.</li>
+<li>index 如果数组是通过正则表达式匹配创建的，匹配是字符串的下标索引为0.</li>
+<li>input 如果数组是通过正则表达式匹配创建的，返回原始的字符串.</li>
+<li>length 数组长度.</li>
+<li>prototype 允许为所有对象附加属性.</li>
+</ul>
+<h3 id="Mutator方法（可以改变数组本身）">Mutator方法（可以改变数组本身）</h3><ul>
+<li>pop 移除数组的最后一个元素，返回值是被删除的元素。</li>
+<li>push 在数组的末尾添加一个或者多个元素，返回值是新的数组的长度。</li>
+<li>reverse 颠倒数组中元素的顺序，原先第一个元素现在变成最后一个，同样原先的最后一个元素变成了现在的第一个，也就是数组的索引发生了变化。</li>
+<li>shift 删除数组的第一个元素，返回值是删除的元素。</li>
+<li>unshift 添加一个或者多个元素在数组的开头，返回值是新的数组的长度。</li>
+<li>splice 添加或删除数组中的一个或多个元素。</li>
+</ul>
+<h3 id="Accessor_方法_（不改变数组本身）">Accessor 方法 （不改变数组本身）</h3><ul>
+<li>concat 返回一个包含此数组和其他数组和/或值的结合的新数组。</li>
+<li>indexOf 返回第一个与给定参数相等的数组元素的索引，没有找到则返回-1。</li>
+<li>join 将所有的数组元素连接成一个字符串。</li>
+<li>lastIndexOf 返回在数组中搜索到的与给定参数相等的元素的最后（最大）索引。</li>
+<li>slice 返回数组中的一段。</li>
+<li>toString 返回代表该数组及其元素的字符,重写Object.toString 过程.</li>
+</ul>
+<h3 id="循环（迭代）过程">循环（迭代）过程</h3><ul>
+<li>filter 对数组中的每一个元素调用参数中指定的过滤函数，并将对于过滤函数返回值为true的那些数组元素集合为新的数组返回。</li>
+<li>forEach 对数组的每一个元素依次调用参数中指定的函数。</li>
+<li>every 如果数组中每一个元素都满足参数中提供的测试函数，则返回真。</li>
+<li>map Creates a new array with the results of calling a provided function on every element in this array.</li>
+<li>some 如果数组中至少有一个元素满足参数函数的测试，则返回true。</li>
+</ul>
+<p></p><h2 id="p6">第六章 函数/作用域/构造器</h2><br>等待更新<p></p>
+<p></p><h2 id="p7">第七章 执行上下文/闭包</h2><br>等待更新<p></p>
+<p></p><h2 id="p8">第八章 DOM</h2><br>等待更新<p></p>
+<p></p><h2 id="p9">第九章 BOM</h2><br>等待更新<p></p>
+<p></p><h2 id="p10">第十章 Ajax</h2><br>等待更新<p></p>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/JavaScript/">JavaScript</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/JavaScript基础/">JavaScript基础</a>
+  </div>
+
+        
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+<section id="comment">
+  <h1 class="title">留言</h1>
+  <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="/2015/06/21/javascript/javascript/" data-title="JavaScript深入浅出（持续更新中）" data-url="http://www.hisimmer.com/2015/06/21/javascript/javascript/"></div>
+    <!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"simmer"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共JS代码 end -->
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Google一下">
+    <input type="hidden" name="q" value="site:www.hisimmer.com">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/JavaScript/">JavaScript</a><small>9</small></li>
+  
+    <li><a href="/categories/css/">css</a><small>3</small></li>
+  
+    <li><a href="/categories/日记/">日记</a><small>2</small></li>
+  
+    <li><a href="/categories/项目/">项目</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  <div class="friendly-link">
+<h3>码农圈:</h3>
+    <ul>
+        <li><a href="http://zhangwenli.com/blog" title="羡辙杂俎">羡辙杂俎</a></li>
+        <li><a href="http://helen123.gitcafe.io/" title="Bicycle's Blog">Bicycle</a></li>
+        <li><a href="http://www.iyuxy.com/" target="_blank" title="喻小佑's Blog">喻小佑</a></li>
+        <li><a href="http://gaohaoyang.github.io/about/" target="_blank" title="Hyg's Blog">Hyg</a></li>
+        <li><a href="http://www.anotherhome.net/" target="_blank" title="Anotherhome">Anotherhome</a></li>
+        <li><a href="http://halamyc.me/" target="_blank" title="halamyc's blog">HalaMyc</a></li>
+        <li><a href="http://iflsy.com/pgy/" target="_blank" title="彭光宇's blog">彭光宇</a></li>
+        <li><a href="http://www.xheldon.com/" target="_blank" title="Xheldon's blog">Xheldon</a></li>
+        <li><a href="https://ymr.me/" target="_blank" title="ymr's blog">ymr</a></li>
+    </ul> 
+    <p>欢迎交换友链~</p>
+</div>
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="footer"><div class="foot-container">
+    <div class="alignleft alignleft-2">
+     <h2 class="foot-h2">Where to study?</h2>
+     <p ><a href="http://www.w3ctech.com/">w3cTech</a>|<a href="http://www.imooc.com/">imooc</a>|<a href="https://www.github.com/">GitHub</a></p>
+     <p ><a href="http://ued.taobao.org/blog/">淘宝UED</a>|<a href="http://fex.baidu.com/">百度FEX</a></p>
+    </div>
+    <div class="alignleft alignleft-2">
+        <h2 class="foot-h2">Have problem？</h2>
+        <p ><a href="http://stackoverflow.com/">StackOverflow</a>|<a href="http://segmentfault.com/">SegmentFault</a>
+    </div>
+    <div class="alignleft alignleft-2">
+        <h2 class="foot-h2">Focus on</h2>
+        <p ><a href="https://facebook.github.io/react/">React</a>|<a href="https://facebook.github.io/flux/">Flux</a>
+    </div>
+    <div class="foot-foot">
+        
+      <p>由<a href="https://hexo.io" title="hexo">hexo</a>强力驱动 || 感谢<a href="https://gitcafe.com/">GitCafe</a>提供主机</p>
+      <p><span id="busuanzi_container_site_uv">
+      欢迎！第<span id="busuanzi_value_site_uv"></span> 位来访的小伙伴!
+    </span></p>
+    <p>&copy; 2015 Simmer</p>
+      
+    </div>
+    </div>
+    <div class="clearfix"></div>
+    
+</div>
+<div id="go-pg-top" style="display: block; opacity: 0.6;" title="返回顶部"><i class="icon-arrow-up"></i></div>
+</footer>
+  <script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+</body>
+</html>

@@ -1,0 +1,331 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>关于viewport的那些事（1）－－翻译 | Simmer</title>
+  <meta name="author" content="Simmer">
+  
+  <meta name="description" content="前端工程师-Simmer的博客">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="关于viewport的那些事（1）－－翻译"/>
+  <meta property="og:site_name" content="Simmer"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/images/favicon.jpg" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Simmer" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div id="header-cont">
+    <div class="alignleft">
+      <h1><a href="http://www.hisimmer.com/">司马</a></h1>
+      <h2><a href="http://www.hisimmer.com/">普通人，只会读书，锻炼，写代码。</a></h2>
+    </div>
+    <nav id="main-nav" class="alignright">
+      <ul>
+        
+          <li><a href="http://www.hisimmer.com/">Home</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+          <li><a href="/archives">Archives</a></li>
+        
+          <li><a href="/2015/03/01/other/work/">作品集</a></li>
+        
+          <li><a href="http://simmer.sinaapp.com/about/index.html">在线简历</a></li>
+        
+          <li><a href="http://simmer-jun.github.io/BKFE/index.html">gitbook</a></li>
+        
+      </ul>
+      <div class="clearfix"></div>
+    </nav>
+    <div class="clearfix"></div>
+</div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <time datetime="2015-09-19T15:22:55.000Z"><a href="/2015/09/19/css/viewports1/">2015-09-19</a></time>
+      
+      
+  
+    <h1 class="title">关于viewport的那些事（1）－－翻译</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <ul>
+<li>原文的一些地方按照我的理解进行了转义，可以点击下面的链接查看英文原文。</li>
+<li>原创翻译，转载请注明出处，谢谢！</li>
+<li>本文系翻译，难免会有一些错误，敬请指正！E-mail to : xushujun_sunny@163.com</li>
+<li>注意：本篇文章翻译自<a href="http://www.quirksmode.org/mobile/viewports.html" target="_blank" rel="external">这里</a><a id="more"></a>
+</li>
+</ul>
+<h1 id="viewport的叙述_-_第一部分">viewport的叙述 - 第一部分</h1><p><code>在这个迷你系列文章里我将会解释viewport和各种重要元素的宽度是如何运作的，例如&lt;html&gt;元素大小，窗口和屏幕的大小是如何计算的</code></p>
+<p>这篇文章是关于桌面浏览器方面的，它的目的是为我们接下来要在移动端浏览器讨论相似问题打下基础。大多数web开发者可能早就直观上的了解大多数桌面端的一些概念。在移动端我们会遇到同样的概念，但是会比这（pc端）更复杂，并且对于大家都早已知道的概念提前进行一些讨论将会帮助你更好的理解移动端浏览器。</p>
+<h2 id="概念：设备像素(device_pixels)和CSS像素(CSS_pixels)">概念：设备像素(device pixels)和CSS像素(CSS pixels)</h2><p>你第一个需要理解的概念就是CSS像素(CSS pixels)，并且知道它和设备像素(device pixels)的区别。</p>
+<p>设备像素是一种我们直观上假定已经了解的。无论我们使用什么设备，这些像素都能够保证屏幕按照正确的分辨率显示，并且（通常来说）这些设备的宽高都可以从<code>screen.width 和screen.height</code>获取。</p>
+<p>如果你给定一个元素的宽度是<code>width: 128px</code>，恰好你的屏幕分辨率为1024px宽，当你把你的浏览器分辨率调到最大限度时，这个元素最多将会在你的屏幕上平铺8次（让我们先粗略的分析，忽略棘手的二进制问题？）。</p>
+<p>如果用户对缩放进行改变，以上的计算结果将会改会。如果用户放大到200%，现在你定义的元素最多将只会在1024px宽点屏幕上平铺4次。（宽高都放大了两倍 译者著）</p>
+<p>作为现代浏览器的一部分，缩放的实现只是对于像素单纯的进行‘拉伸’。这就意味着元素的宽度并没有从128像素到256像素，事实上当前的1个CSS像素宽度是先前的两倍。实际上，即使它看起来占据了256个设备像素(device pixels)，但是这个元素依旧是128CSS像素(CSS pixels)宽。</p>
+<p>换句话说，缩放到200%使得1px的CSS像素（CSS pixels）由4个设备像素（device pixels）组成。（两倍是宽度，两倍是高度，所以是4倍面积的大小）</p>
+<p>一些示例的图片也许会很好的阐释CSS像素这个概念。下面是在用户缩放为100%时的4个CSS像素的视图。这里看不出有什么问题，CSS像素完全覆盖了设备像素（device pixels）.</p>
+<p><img src="/images/viewport/pic1.gif" alt="CSS像素完全覆盖了设备像素"></p>
+<p>现在，让我们试着缩小一下。从下图我们可以看到CSS像素开始缩小，这也就意味着一个设备像素(device pixels)现在能覆盖一些CSS像素(CSS pixel)</p>
+<p><img src="/images/viewport/pic2.gif" alt="CSS像素看起来缩小了"></p>
+<p>如果你试着放大，相反的事情发生了。CSS像素开始变大，现在每个CSS像素将会覆盖一些设备像素。</p>
+<p><img src="/images/viewport/pic3.gif" alt="CSS像素看起来变大了"></p>
+<p>说了这么多，我想要告诉你的是我们要把焦点放在CSS像素上。正是这些CSS像素决定了你的样式表将会如何被浏览器渲染并展示。</p>
+<p>设备像素几乎和你无关，而对于用户则恰恰相反。为了以一种最舒服的方式阅读网页，用户将会选择将页面放大或缩小。当然，这种缩放等级你无需关心，浏览器将会保证你的CSS布局被自动的拉伸或挤压。</p>
+<h2 id="100%_zoom_(百分百缩放)">100% zoom (百分百缩放)</h2><p>我开始的例子是基于缩放等级为100%的情况。现在，是时候用一些更加严谨的的语句去定义它：</p>
+<p><code>在缩放等级为100%时，每个设备像素和CSS像素严格相等。</code></p>
+<p>100%缩放的概念在解释浏览器遵循的（标准）是非常有用的，但在你的日常工作时你不必过度的担心它。在桌面端，你通常都会在100%缩放的情况下测试你的网站，就算用户对页面进行了放大或缩小，神奇的CSS像素都会确保你的布局保持相同的比例。</p>
+<h2 id="屏幕尺寸">屏幕尺寸</h2><p>让我们看一些实际的测量方法。我将会从<code>screen.width</code>和<code>screen.height</code>开始说起。他们包含了用户屏幕的总的宽高。由于设备像素(device pixels)的不变性，这些尺寸的值都是通过设备像素进行衡量的：它们是显示器的特征，而不是浏览器的。</p>
+<p><img src="/images/viewport/pic4.jpg" alt="屏幕尺寸"></p>
+<p>赞！但是有了这个信息后我们能做什么？</p>
+<p>基本上，什么都做不了。用户显示器的尺寸对我们来说并不重要 －－ 好吧，除非测量它并用于数据库的统计。</p>
+<h2 id="窗口尺寸(window_size)">窗口尺寸(window size)</h2><p>显然，你想要知道的是浏览器窗口的内部尺寸。它会告诉你当前用户有多少可用的空间来展示CSS布局。你可以通过<code>window.innerHeight</code>和<code>window.innerWidth</code>来获取浏览器当前窗口内部尺寸。</p>
+<p><img src="/images/viewport/pic5.jpg" alt="获取浏览器窗口内部尺寸"></p>
+<p>显然，浏览器窗口的内部宽度是用CSS像素来测量的。你需要知道你能放进浏览器窗口的布局尺寸和当用户放大时候布局缩小的尺寸。所以当用户选择放大页面的时候你将会通过浏览器窗口得到较少的可用空间，而且<code>window.innerWidth/Height</code>的值将会反应浏览器窗口的变化而减小。</p>
+<p>（这里唯一例外的就是Opera了，在Opera里面当用户放大的时候<code>window.innerHeight/Width</code>的值并不会减小：它们反映的是设备像素。这在桌面端是很烦恼的一点，但是最要命的还在移动端，我们稍后就会了解到）</p>
+<p><img src="/images/viewport/pic6.jpg" alt="窗口尺寸不变小"></p>
+<p>注意到这里所测量到的宽度和高度包括了滚动条。它们也是浏览器内部窗口的一部分。（这主要是历史原因。）</p>
+<h2 id="滚动偏移（scrolling_offset）">滚动偏移（scrolling offset）</h2><p><code>window.pageXOffset</code>和<code>window.pageYOffset</code>包含了文档的水平和垂直滚动偏移。因此，你能知道用户将页面滚动到了什么位置。</p>
+<p><img src="/images/viewport/pic7.jpg" alt="用户的滚动可以很方便的获得"></p>
+<p>这些属性也是用CSS像素来衡量的。不管用户缩放了多少，你都要知道文档被滚动到了哪里。</p>
+<p>理论上来说，如果用户向上滚动后将页面放大，<code>window.pageX/YOffset</code>的值将会发生变化。然而，当用户缩放时浏览器为了保持页面的一致性而保持相同元素在可见页面的顶部。（这句话可能没翻译好，太绕口了 原谅我蹩脚的英语T-T 译者注）<br>不会每次都能完美的起作用，但是那意味着在实践中<code>window.pageX/YOffset</code>的确没有改变：滑动出浏览器窗口的CSS像素数量看起来（粗略的看起来）是一样的。</p>
+<p><img src="/images/viewport/pic8.jpg" alt="方大后看起来window.pageX/YOffset并没有改变"></p>
+<h2 id="概念：视口（the_viewport）">概念：视口（the viewport）</h2><p>在我们继续讨论更多的javascript属性之前不得不介绍另一个概念：视口（the viewport）。</p>
+<p>视口的作用是约束作为你的页面中包含所有块级元素的最外层的<code>&lt;html&gt;</code>元素。（好吧我承认绕口 ＝＝ 译者注）</p>
+<p>这里听起来可能会有些模棱两可，所以下面给出了一个实际的例子来说明。假设你有一个流动式布局，并且其中一个侧边栏设定了<code>width:10%</code>，现在这个侧边栏将会随着浏览器窗口的调整而整齐的增大和缩小。但是这究竟是怎么一回事呢？</p>
+<p>从技术上说，发生的事情只是这个侧边栏获得了它父元素的10%的宽度而已。比如说<code>&lt;body&gt;</code>元素（你并没有给它设定宽度）。因此现在的问题变成了<code>&lt;body&gt;</code>元素有宽度是多少？</p>
+<p>通常来说，所有的会计元素将会获得它们父元素的100%宽度（这里有一些特殊情况，但目前我们先将它忽略）。所以这个<code>&lt;body&gt;</code>元素和他的父元素，也就是<code>&lt;html&gt;</code>元素的宽度一样。</p>
+<p>但是<code>&lt;html&gt;</code>元素的宽度又是多少呢？为什么，他和浏览器的窗口一样宽。这也就是为什么你的侧边栏设置了<code>width:10%</code>将会占据整个浏览器窗口的10%。所有的web开发人员直观的知道并运用了这一点。</p>
+<p>你可能不知道的是这其中的工作原理。理论上说，<code>&lt;html&gt;</code>的宽度要受到视口(viewport)宽度的约束。<code>&lt;html&gt;</code>元素从当前视口(viewport)来获取宽度。</p>
+<p>关于视口，则则好相反，它事实上和浏览器窗口(browser window)相等：视口被这样定义。视口不是一个HTML结构，所以你不能通过CSS来影响它。它仅仅是有着浏览器窗口(browser window)的高度和宽度 －－ 在桌面端而言。在移动端上，它看起来有些复杂。</p>
+<h2 id="后果">后果</h2><p>这种情况有一些奇怪的后果。你可以从<a href="http://www.quirksmode.org/mobile/viewports.html" target="_blank" rel="external">这个</a>网站看到它们其中一种表现。将页面滚动到顶部并且放大2到3倍，这样这个站点的内容将会溢出浏览器窗口(browser window)。</p>
+<p>现在将页面滚动到右边，你会看到网站顶部的蓝色工具条并没有排列整齐。</p>
+<p><img src="/images/viewport/pic9.jpg" alt="蓝色条纹并没有正确对齐"></p>
+<p>这个行为就是视口如何被定义的一个结果。我给了一个在页面顶部的蓝色工具栏一个<code>width:100%</code>。100%的宽度是相对谁的宽度？是相对<code>&lt;html&gt;</code>元素宽度的100%，但是这个元素有一个<code>overflow:visible</code>的属性，这也就意味着在任何情况下溢出的内容都会被显示。</p>
+<p>但是这个蓝色的工具条并没有溢出，因为我给它设置了<code>width:100%</code>，毕竟，浏览器必须要服从给它设定的视口宽度。浏览器并不关心这个宽度是否是太狭窄了。</p>
+<p><img src="/images/viewport/pic10.jpg" alt="100%视口宽度"></p>
+<h2 id="文档宽度？">文档宽度？</h2><p>我真正需要知道的是页面的总的内容区域有多大，包括那些‘突出’来的内容。据我所知，我们是无法获取这个值的（当然，除非你计算页面上每个元素的内容宽度和填充值，但是这容易出错，说得客气一点）。</p>
+<p>我现在开始认为我需要一个一个javascript属性对来提供我所说的’document width’（当然，是CSS像素）。</p>
+<p><img src="/images/viewport/pic11.jpg" alt="文档宽度"></p>
+<p>如果我们真的感到困难，为什么不把这个值暴露给CSS呢？我将会很乐意让我们蓝色工具条的<code>width:1000%</code>是想对于文档宽度而不是<code>&lt;html&gt;</code>元素的宽度。（这势必会非常棘手，不过，我不会感到惊讶，如果这个无法实现。）</p>
+<p>浏览器厂商们，你们怎么认为的呢？</p>
+<p>测量视口</p>
+<p>你可能想要知道视口的尺寸。它们可以在<code>document.documentElement.clientWidth</code>和<code>document.documentElement.clientHeight</code>中被发现。</p>
+<p><img src="/images/viewport/pic12.jpg" alt="测量视口尺寸"></p>
+<p>如果你知道文档对象模型（DOM），你知道<code>document.documentElement</code>事实上是<code>&lt;html&gt;</code>元素：任何一个HTML元素的祖先。然而，视口的级别要高一级，可以这么说；它是一个包含<code>&lt;html&gt;</code>的元素。这可能会很重要当你给<code>&lt;html&gt;</code>元素设定一个宽度的话（即便我不太赞同这样，但是这还是有可能发生的。）</p>
+<p>在这种情况下，<code>document.documentElement,clientWidth</code>和<code>document.documentElement,clientHeight</code>依旧给出视口的测量值，当然并不是<code>&lt;html&gt;</code>的值。（这是一个特别的规则，只运用到这个元素的这个属性对）</p>
+<p><img src="/images/viewport/pic13.jpg" alt="指的是视口的宽度"><br>所以<code>document.documentElement.clientWidth</code>和<code>-Height一</code>直代表的是viewport的尺寸，不管<code>&lt;html&gt;</code>元素的尺寸是多少。</p>
+<h2 id="两个属性对">两个属性对</h2><p>但是难道viewport宽度的尺寸也可以通过window.innerWidth/Height来提供吗？怎么说呢，模棱两可。</p>
+<p>两个属性对之间存在着正式区别：<code>document.documentElement.clientWidth</code>和<code>-Height</code>并不包含滚动条，但是<code>window.innerWidth/Height</code>包含。这像是鸡蛋里挑骨头。</p>
+<p>事实上两个属性对的存在是浏览器战争的产物。当时Netscape只支持<code>window.innerWidth/Height</code>，IE只支持<code>document.documentElement</code>.<code>clientWidth</code>和<code>Height</code>。从那时起所有其他浏览器开始支持<code>clientWidth/Height</code>，但是IE没有支持<code>window.innerWidth/Height</code>。<br>在桌面环境上拥有两个属性对是有一些累赘的－但是就像我们将要看到的，在移动端这将会得到好处。</p>
+<h2 id="度量元素">度量<html>元素</html></h2><p>document.documentElement.offsetWidth/Height</p>
+<ul>
+<li>意义：元素（也就是页面）的尺寸。</li>
+<li>度量单位：CSS像素。</li>
+<li>浏览器错误：IE度量的是viewport，而不是元素。</li>
+</ul>
+<p>所以<code>clientWidth/Height</code>在所有情况下都提供viewport的尺寸。但是我们去哪里获取<html>元素本身的尺寸呢？它们存储在<code>document.documentElement.offsetWidth</code>和<code>-Height</code>之中。<br><img src="/images/viewport/pic18.jpg" alt="html尺寸"></html></p>
+<p>这些属性可以使你以块级元素的形式访问<html>元素；如果你设置width，那么offsetWidth将会表示它。<br><img src="/images/viewport/pic19.jpg" alt="offset"></html></p>
+<h2 id="事件中的坐标">事件中的坐标</h2><p>pageX/Y, clientX/Y, screenX/Y</p>
+<ul>
+<li>意义：见正文。</li>
+<li>度量单位：见正文。</li>
+<li>浏览器错误：IE不支持pageX/Y。IE和Opera以CSS像素为单位计算screenX/Y。<br>然后是事件中的坐标。当一个鼠标事件发生时，有不少于五种属性对可以给你提供关于事件位置的信息。对于我们当前的讨论来说它们当中的三种是重要的：</li>
+<li>pageX/Y提供了相对于<html>元素的以CSS像素度量的坐标。</html></li>
+</ul>
+<p><img src="/images/viewport/pic20.jpg" alt="pageX/Y"></p>
+<p>clientX/Y提供了相对于viewport的以CSS像素度量的坐标。 </p>
+<p><img src="/images/viewport/pic21.jpg" alt="clientX/Y"></p>
+<p>screenX/Y提供了相对于屏幕的以设备像素进行度量的坐标。</p>
+<p><img src="/images/viewport/pic22.jpg" alt="screenX/Y"></p>
+<p>90%的时间你将会使用pageX/Y；通常情况下你想知道的是相对于文档的事件坐标。其他的10%时间你将会使用clientX/Y。你永远不需要知道事件相对于屏幕的坐标。</p>
+<h2 id="媒体查询">媒体查询</h2><ul>
+<li>意义：见正文。</li>
+<li>度量单位：见正文。</li>
+<li>浏览器错误：IE不支持它们。<ul>
+<li>如果 <code>device-width/height</code>是以CSS像素进行度量的，那么Firefox将会使用<code>screen.width/height</code>的值。</li>
+<li>如果<code>width/height</code>是以设备像素进行度量的，那么Safari和Chrome将会使用<code>documentElement.clientWidth/Height</code>的值。</li>
+</ul>
+</li>
+</ul>
+<p>最后，说说关于媒体查询的事。原理很简单：你可以声明「只在页面宽度大于，等于或者小于一个特定尺寸的时候才会被执行」的特殊的CSS规则。比如：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">div.sidebar &#123;</span><br><span class="line">    width: <span class="number">300</span>px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@media all and (max-width: <span class="number">400</span>px) &#123;</span><br><span class="line">    <span class="comment">// styles assigned when width is smaller than 400px;</span></span><br><span class="line">    div.sidebar &#123;</span><br><span class="line">        width: <span class="number">100</span>px;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>当前sidebar是300px宽，除了当宽度小于400px的时候，在那种情况下sidebar变得100px宽。<br>问题很显然：我们这儿度量的是哪个宽度？<br>这儿有两个对应的媒体查询：<code>width/height</code>和<code>device-width/device-height</code>:</p>
+<ul>
+<li><code>width/height</code>使用和<code>documentElement .clientWidth/Height</code>（换句话说就是viewport宽高）一样的值。它是工作在CSS像素下的。</li>
+<li><code>device-width/device-height</code>使用和<code>screen.width/height</code>（换句话说就是屏幕的宽高）一样的值。它工作在设备像素下面。<br><img src="/images/viewport/pic23.jpg" alt="device-width/device-height"></li>
+</ul>
+<p>你应该使用哪个？这还用想？当然是<code>width</code>。Web开发者对设备宽度不感兴趣；这个是浏览器窗口的宽度。<br>所以在桌面环境下去使用width而去忘记d<code>evice-width</code>吧。我们即将看到这个情况在移动端会更加麻烦。</p>
+<h1 id="总结">总结</h1><p>本文总结了我们对桌面浏览器行为的探寻。这个系列的第二部分把这些概念指向了移动端，并显示的指出了与桌面环境上的一些重要区别。</p>
+<h2 id="一些说明">一些说明</h2><p>在翻译这篇文章块结束的时候发现了有童鞋早就翻译过了，无用功大概指的的就是这样吧 ＝＝<br>so，在这里我贴出这个系列的第二部分的翻译。<br><a href="http://weizhifeng.net/viewports2.html" target="_blank" rel="external">关于viewport的那些事（2）－－翻译</a><br>感谢这位翻译的童鞋🙏</p>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/css/">css</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/个人学习总结/">个人学习总结</a>
+  </div>
+
+        
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+<section id="comment">
+  <h1 class="title">留言</h1>
+  <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="/2015/09/19/css/viewports1/" data-title="关于viewport的那些事（1）－－翻译" data-url="http://www.hisimmer.com/2015/09/19/css/viewports1/"></div>
+    <!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"simmer"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共JS代码 end -->
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Google一下">
+    <input type="hidden" name="q" value="site:www.hisimmer.com">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/JavaScript/">JavaScript</a><small>9</small></li>
+  
+    <li><a href="/categories/css/">css</a><small>3</small></li>
+  
+    <li><a href="/categories/日记/">日记</a><small>2</small></li>
+  
+    <li><a href="/categories/项目/">项目</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  <div class="friendly-link">
+<h3>码农圈:</h3>
+    <ul>
+        <li><a href="http://zhangwenli.com/blog" title="羡辙杂俎">羡辙杂俎</a></li>
+        <li><a href="http://helen123.gitcafe.io/" title="Bicycle's Blog">Bicycle</a></li>
+        <li><a href="http://www.iyuxy.com/" target="_blank" title="喻小佑's Blog">喻小佑</a></li>
+        <li><a href="http://gaohaoyang.github.io/about/" target="_blank" title="Hyg's Blog">Hyg</a></li>
+        <li><a href="http://www.anotherhome.net/" target="_blank" title="Anotherhome">Anotherhome</a></li>
+        <li><a href="http://halamyc.me/" target="_blank" title="halamyc's blog">HalaMyc</a></li>
+        <li><a href="http://iflsy.com/pgy/" target="_blank" title="彭光宇's blog">彭光宇</a></li>
+        <li><a href="http://www.xheldon.com/" target="_blank" title="Xheldon's blog">Xheldon</a></li>
+        <li><a href="https://ymr.me/" target="_blank" title="ymr's blog">ymr</a></li>
+    </ul> 
+    <p>欢迎交换友链~</p>
+</div>
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="footer"><div class="foot-container">
+    <div class="alignleft alignleft-2">
+     <h2 class="foot-h2">Where to study?</h2>
+     <p ><a href="http://www.w3ctech.com/">w3cTech</a>|<a href="http://www.imooc.com/">imooc</a>|<a href="https://www.github.com/">GitHub</a></p>
+     <p ><a href="http://ued.taobao.org/blog/">淘宝UED</a>|<a href="http://fex.baidu.com/">百度FEX</a></p>
+    </div>
+    <div class="alignleft alignleft-2">
+        <h2 class="foot-h2">Have problem？</h2>
+        <p ><a href="http://stackoverflow.com/">StackOverflow</a>|<a href="http://segmentfault.com/">SegmentFault</a>
+    </div>
+    <div class="alignleft alignleft-2">
+        <h2 class="foot-h2">Focus on</h2>
+        <p ><a href="https://facebook.github.io/react/">React</a>|<a href="https://facebook.github.io/flux/">Flux</a>
+    </div>
+    <div class="foot-foot">
+        
+      <p>由<a href="https://hexo.io" title="hexo">hexo</a>强力驱动 || 感谢<a href="https://gitcafe.com/">GitCafe</a>提供主机</p>
+      <p><span id="busuanzi_container_site_uv">
+      欢迎！第<span id="busuanzi_value_site_uv"></span> 位来访的小伙伴!
+    </span></p>
+    <p>&copy; 2015 Simmer</p>
+      
+    </div>
+    </div>
+    <div class="clearfix"></div>
+    
+</div>
+<div id="go-pg-top" style="display: block; opacity: 0.6;" title="返回顶部"><i class="icon-arrow-up"></i></div>
+</footer>
+  <script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+</body>
+</html>

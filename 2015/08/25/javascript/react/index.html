@@ -1,0 +1,336 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>浅识React | Simmer</title>
+  <meta name="author" content="Simmer">
+  
+  <meta name="description" content="前端工程师-Simmer的博客">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="浅识React"/>
+  <meta property="og:site_name" content="Simmer"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/images/favicon.jpg" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Simmer" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div id="header-cont">
+    <div class="alignleft">
+      <h1><a href="http://www.hisimmer.com/">司马</a></h1>
+      <h2><a href="http://www.hisimmer.com/">普通人，只会读书，锻炼，写代码。</a></h2>
+    </div>
+    <nav id="main-nav" class="alignright">
+      <ul>
+        
+          <li><a href="http://www.hisimmer.com/">Home</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+          <li><a href="/archives">Archives</a></li>
+        
+          <li><a href="/2015/03/01/other/work/">作品集</a></li>
+        
+          <li><a href="http://simmer.sinaapp.com/about/index.html">在线简历</a></li>
+        
+          <li><a href="http://simmer-jun.github.io/BKFE/index.html">gitbook</a></li>
+        
+      </ul>
+      <div class="clearfix"></div>
+    </nav>
+    <div class="clearfix"></div>
+</div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <time datetime="2015-08-25T05:00:48.000Z"><a href="/2015/08/25/javascript/react/">2015-08-25</a></time>
+      
+      
+  
+    <h1 class="title">浅识React</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p><a href="https://facebook.github.io/react/" target="_blank" rel="external">React</a> - 引领未来用户界面框架<br><img src="/images/demo3/react.png" alt="React"><br>最近迷上了React，想来写一遍博客，一是巩固自己所得，二来是希望能帮到初学者更好的入门。如果能帮到你，我将十分高兴~<br>有内容有任何问题及疑问，请E-mail给我：xushujun_sunny@163.com<br><a id="more"></a></p>
+<h2 id="什么是React?">什么是React?</h2><ul>
+<li>Facebook开源项目，用于构建用户界面的JAVASCRIPT库<a href="https://github.com/facebook/react" target="_blank" rel="external">GitHub</a></li>
+<li>仅仅是UI</li>
+<li>虚拟DOM</li>
+<li>数据流</li>
+<li>组件 == 状态机</li>
+</ul>
+<h2 id="资源">资源</h2><ul>
+<li><a href="http://facebook.github.io/react/" target="_blank" rel="external">React官网</a></li>
+<li><a href="https://github.com/facebook/react" target="_blank" rel="external">React-GitHub</a></li>
+<li><a href="http://reactjs.cn/react/index.html" target="_blank" rel="external">React-中文翻译网站</a></li>
+<li><a href="http://www.react-china.org/" target="_blank" rel="external">React-中文论坛</a></li>
+<li><a href="https://github.com/ruanyf/react-demos" target="_blank" rel="external">React-Demo</a></li>
+<li><a href="http://facebook.github.io/flux/docs/todo-list.html#content" target="_blank" rel="external">React-Flux架构应用 - todolist</a></li>
+</ul>
+<h2 id="目录">目录</h2><ul>
+<li><a href="#simple">快速开始</a></li>
+<li><a href="#arg">React参数说明</a></li>
+<li><a href="#space">React组件周期函数</a></li>
+<li><a href="#">注意事项</a></li>
+<li><a href="#">学习资源</a></li>
+</ul>
+<p></p><h3 id="simple">快速开始</h3><br>React中组件是一个基本单元。<p></p>
+<h3 id="一个简单的组件">一个简单的组件</h3><ul>
+<li>React组件通过一个 render() 方法，接受输入的参数并返回展示的对象。 </li>
+<li>以下这个例子使用了JSX，它类似于XML的语法（注意：JSX在React中是可选的，但是使用JSX能让开发者以熟悉的类Xml语法来编写）<a href="http://reactjs.cn/react/docs/displaying-data.html#jsx-" target="_blank" rel="external">这里查看React关于JSX的中文翻译</a></li>
+<li>输入的参数通过 render() 传入组件后，将存储在this.props<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> HelloMessage = React.createClass(&#123;  </span><br><span class="line"><span class="comment">//使用React.createClass创建一个名为HelloMessage的组件</span></span><br><span class="line">  render: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;  </span><br><span class="line">  <span class="comment">//组件返回render方法，里面就是组件返回的虚拟DOM结构</span></span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="title">div</span>&gt;</span>Hello &#123;this.props.name&#125;<span class="tag">&lt;/<span class="title">div</span>&gt;</span>;</span>  </span><br><span class="line">    <span class="comment">//在React的JSX中会将两个花括号&#123; &#125;之间的内容渲染为动态值</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line">React.render(<span class="xml"><span class="tag">&lt;<span class="title">HelloMessage</span> <span class="attribute">name</span>=<span class="value">"Simmer"</span> /&gt;</span>, mountNode);  </span><br><span class="line">//渲染组件，加载进真实的DOM中</span></span><br></pre></td></tr></table></figure></li>
+<li><p><code>React.render(arg1,arg2,arg3[可选])</code>，react的render方法用于渲染react组件，第一个参数接收一个顶级标签元素，这个标签可以是react的组件，也可以是一个div标签，但请记住，最外层一定要有一个顶级包裹元素。egg:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">React.render( </span><br><span class="line">      <span class="xml"><span class="tag">&lt;<span class="title">List</span>&gt;</span> </span><br><span class="line">      //允许，最外层为react组件</span><br><span class="line">          <span class="tag">&lt;<span class="title">span</span>&gt;</span>Hello<span class="tag">&lt;/<span class="title">span</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="title">small</span>&gt;</span>Simmer<span class="tag">&lt;/<span class="title">small</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="title">List</span>&gt;</span>,</span><br><span class="line">      document.getElementById('text')</span><br><span class="line">      );</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">React.render(  </span><br><span class="line"> //不允许，最外层需要添加包裹标签</span><br><span class="line">          &lt;span&gt;Hello&lt;/span&gt;</span><br><span class="line">          &lt;small&gt;Simmer&lt;/small&gt;,</span><br><span class="line">      document.getElementById('text')</span><br><span class="line">      );</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>第二个参数<code>arg2</code>是一个真实的DOM节点，用于将第一个参数渲染的的结果进行绑定</p>
+</li>
+<li>第三个参数<code>arg3</code>是可选的，这里可以简单的注册一个简单的<code>callback</code> function，当react将结果渲染完成后就将调用这个callback函数</li>
+<li>在react中，组件可以复用，react实行单向数据流，这使得数据的结构清晰 ，易于关注点分离</li>
+</ul>
+<h3 id="不使用JSX">不使用JSX</h3><p>JSX能将render方法返回的类XML转为纯JavaScript，继而运行。<br>以前面第一个例子为例，如果不使用JSX，他将会是这个样子的:<br> <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> HelloMessage = React.createClass(&#123;displayName: <span class="string">"HelloMessage"</span>,</span><br><span class="line">  render: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> React.createElement(<span class="string">"div"</span>, <span class="literal">null</span>, <span class="string">"Hello "</span>, <span class="keyword">this</span>.props.name);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">React.render(React.createElement(HelloMessage, &#123;name: <span class="string">"Simmer"</span>&#125;), mountNode);</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>可以看到，使用JSX会让我们有利于理解组件结构，并且JSX使用类XML语法，也易于上手。</li>
+<li>在真正的生产环节，我们可以事先将编写好的JSX文件进行转换，转换成浏览器可以执行的JavaScript语句。<a href="http://reactjs.cn/react/docs/jsx-in-depth.html" target="_blank" rel="external">点击这里查看JSX的更多知识</a></li>
+<li>render() 函数应该是纯粹的，也就是说该函数不修改组件 state，每次调用都返回相同的结果，不读写 DOM 信息，也不和浏览器交互（例如通过使用 setTimeout）。如果需要和浏览器交互，在 componentDidMount() 中或者其它生命周期方法中做这件事。保持 render() 纯粹，可以使服务器端渲染更加切实可行，也使组件更容易被理解。</li>
+</ul>
+<h3 id="做个小总结">做个小总结</h3><ul>
+<li>React中使用React.creatClass()去创建组件，这个方法接受一个对象，对象中最重要也是必不可少的方法是<code>render</code>方法，这个<code>render</code>方法返回一个子级，该子级可能包含很深的子级结构。组件与标准原型类的不同之处在于，你不需要使用 new 来实例化。 组件是一种很方便的封装，可以（通过 new ）为你创建后台实例。</li>
+<li>React.render()去实例化组件。使用React.creatClass()只是构造了一个组件类，但是要想其真正发挥作用，还得将它加入到真实的DOM结构中（实例化组件）。</li>
+<li><p>关于React.creatClass()，他和React.render()一样是顶层API，关于他们参数可能的结构如下所示：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">React.createClass(&#123;</span><br><span class="line">   getInitialState: <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">     <span class="comment">// component Lifecycle function </span></span><br><span class="line">     <span class="keyword">return</span> &#123;</span><br><span class="line">       count : <span class="number">0</span>,</span><br><span class="line">       color : <span class="string">'red'</span>,</span><br><span class="line">       name : simmer</span><br><span class="line">     &#125;;</span><br><span class="line">   &#125;,</span><br><span class="line">   handlerFunction: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">     <span class="comment">// response for event </span></span><br><span class="line">   &#125;,</span><br><span class="line">   otherFunction: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">     <span class="comment">// other function maybe work for other function use this.otherFunction()to use    </span></span><br><span class="line">   &#125;,</span><br><span class="line">   render: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">// dosomething</span></span><br><span class="line">    <span class="keyword">return</span> (JSX expression);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>在上面的<code>React.createClass()</code>接受一个复合对象，这个对象包含很多方法（或属性），其中这些方法可以按照功能划分为几种：</p>
+</li>
+<li><p><code>render</code>方法（必须），这个方法是必须的！React必须知道这个组件的虚拟DOM结构。通常 <code>render</code>方法返回的</p>
+</li>
+<li>React组件周期函数。类似<code>getInitialState</code>将会在组件初始化的时候执行，返回的对象将会赋值给<code>this.state</code>对象,初始化的值可以通过<code>this.state[name]</code>访问.其他还有很多React组件周期函数，将会在下面详细讲解，这里可以把他们理解为在React组件不同时期执行的特定函数。</li>
+<li>事件处理函数（<code>handlerFunction</code>）。你可以在很简单的在render方法里面使用驼峰式的事件添加，例如：<code>&lt;button onClick={this.onClickhandler}&gt;点击&lt;/botton&gt;</code>,React中将事件统一封装，所以在React中，我们只要按照React制定的事件命名方式去添加事件就ok了。<a href="http://reactjs.cn/react/docs/events.html" target="_blank" rel="external">点击查看React中事件介绍</a></li>
+<li><code>otherFunction</code>这个可以是自己定义的tool Function，来处理一些复杂数据。</li>
+<li>在<code>React.creatClass()</code>中的render方法中返回的数据应该是<code>纯净</code>的，这里面应该是一个仅仅包含React component的组件或类HTML标记元素，这里不适合处理一些复杂的数据（也就是说这里应该是纯净的），处理复杂的数据应该像上面的<code>otherFunction</code>一样定义。例如：</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">React.creatClass(&#123;</span><br><span class="line">  render: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (  <span class="comment">// 这里应该仅仅返回类XML标记或HTML标记</span></span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        <span class="xml"><span class="tag">&lt;<span class="title">Reactcomponent</span>&gt;</span>&#123;this.props[objname] = this.Calculater(&#123;this.props[argus]&#125;) &#125;<span class="tag">&lt;/<span class="title">Reactcomponent</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">    )</span>;</span><br><span class="line">  &#125;,</span><br><span class="line">  Calculater : functon (aru) &#123;</span><br><span class="line">     <span class="comment">// here do something you can setState() or return a simple result </span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="arg">React参数说明</h2>
+
+<h2 id="space">React组件周期函数</h2>
+
+<ul>
+<li>React的高度可复用组件和虚拟DOM是其的一大亮点，以组件为基本单元方便我们更好的组织管理代码和复用代码。虚拟DOM能保证React能以最小的代价去修改真实DOM（事实上React会构建一个组件的虚拟DOM，随后在组件的生命周期内，随着用户的交互，React的组件可能会重新渲染，这个时候React会将改变后的虚拟DOM结构和真实DOM比较，以最小的代价去更新DOM）。</li>
+<li>可能我们会将页面交互的延迟怪罪于JavaScript，事实上最耗费浏览器性能的正是DOM的操作，React的这种以最小的代价去更新DOM的方式，将会大大加快页面的响应速度。</li>
+<li>React组件的轻便可操作性还要得益于它在生命周期里的一些特定函数。这些特定函数按照React component的存在周期可以分为：<ul>
+<li>组件初始化渲染期 （初始化组件，获取初始state值和组件的默认props值）<ul>
+<li>getInitialState （每实例化一次组件都会执行一次）</li>
+<li>getDefaultProps (组件存在期只会执行一次，复杂的对象将会在复用的组件之间共享)</li>
+<li>componentWillMount 组件渲染之前执行，这里可以在组件渲染之前对组件做最后一次修改</li>
+<li>render 渲染，添加到真实的DOM中</li>
+<li>componentDidMount 组件渲染完毕后立即执行 这里可以操作真实的DOM</li>
+</ul>
+</li>
+<li>组件存在期（这个时候组件接受用户的交互，并在必要时重新渲染组件）<ul>
+<li>componentWillReceiveProps(next_propds)   组件接受新的prop时候调用该函数</li>
+<li>shouldComponentUpdate  这个函数返回true组件将会执行componentWillUpdate及后面的render函数，否则返回false则不更新，后面的函数不执行</li>
+<li>componentWillUpdate  组件更新前调用该函数，提供在重新渲染组件前最后一次修改state的机会 </li>
+<li>render 渲染组件</li>
+<li>componentDidUpdate  组件更新完后立即执行，这里可以操作更新后的DOM</li>
+</ul>
+</li>
+<li>组件销毁期 （组件将被销毁，这个时候将会提供组件清理自身的机会，比如说清除使用完的定时器）<ul>
+<li>componentWillUnmount  组件销毁前执行 提供清理组件自身的机会</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="来看看实例">来看看实例</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Count = React.createClass(&#123;</span><br><span class="line">        getInitialState: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'getInitialState 在组件实例化都会执行'</span>);</span><br><span class="line">            <span class="keyword">return</span> &#123;</span><br><span class="line">                counts : <span class="number">0</span></span><br><span class="line">            &#125;;</span><br><span class="line">        &#125;,</span><br><span class="line">        getDefaultProps: <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'getDefaultProps 无论组件实例化多少次都只执行一次，这里设置默认prop属性，在实例间将会共享！'</span>);</span><br><span class="line">             <span class="keyword">return</span> &#123;</span><br><span class="line">                counts : <span class="number">0</span></span><br><span class="line">            &#125;;</span><br><span class="line">        &#125;,</span><br><span class="line">        componentWillMount : <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'componentWillMount  组件渲染前执行 提供最后一次修改state的机会'</span>);</span><br><span class="line">        &#125;,</span><br><span class="line">        componentDidMount: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'componentDidMount  组件渲染后立即执行 这里可以使用getDOMNode()方法访问真实DOM节点'</span>);</span><br><span class="line">        &#125;,</span><br><span class="line">        componentWillReceiveProps:<span class="function"><span class="keyword">function</span>(<span class="params">nextprops</span>) </span>&#123; <span class="comment">// 组件存在期</span></span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'componentWillReceiveProps  组件接受到props属性时候调用'</span>);</span><br><span class="line">        &#125;,</span><br><span class="line">        shouldComponentUpdate: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'shouldComponentUpdate  此处判断是否需要更新组件 返回false不更新 否则true则更新'</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;,</span><br><span class="line">        componentWillUpdate: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'componentWillUpdate  组件更新前调用 此处提供渲染前最后一次修改state的机会！'</span>);</span><br><span class="line">        &#125;,</span><br><span class="line">        componentDidUpdate: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'componentDidUpdate  组件更新后立即调用 这里可以使用getDOMNode( )方法访问真实DOM节点'</span>);</span><br><span class="line">        &#125;,</span><br><span class="line">        componentWillUnmount: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">           <span class="built_in">console</span>.log(<span class="string">'componentWillUnmount  组件销毁前调用，这里提供组件清除自身的机会（释放内存）'</span>);</span><br><span class="line">        &#125;,</span><br><span class="line">        update: <span class="function"><span class="keyword">function</span> (<span class="params"> </span>) </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.setState(&#123;</span><br><span class="line">                counts : <span class="keyword">this</span>.state.counts + <span class="number">1</span></span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;,</span><br><span class="line">        render: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> (</span><br><span class="line">                <span class="xml"><span class="tag">&lt;<span class="title">div</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="title">h1</span>&gt;</span>点击开始计数<span class="tag">&lt;/<span class="title">h1</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="title">button</span> <span class="attribute">onClick</span>=<span class="value">&#123;this.update&#125;</span>&gt;</span> 按钮<span class="tag">&lt;/<span class="title">button</span>&gt;</span></span><br><span class="line">                    </span><br><span class="line">                <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">                )</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> Show = React.createClass(&#123;</span><br><span class="line">        getInitialState : <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> &#123;</span><br><span class="line">                say: <span class="string">'hi simmer!'</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        getDefaultProps: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> &#123;</span><br><span class="line">                number: <span class="number">999</span></span><br><span class="line">            &#125;;</span><br><span class="line">        &#125;,</span><br><span class="line">        render: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.dir(<span class="keyword">this</span>.props.number);</span><br><span class="line">            <span class="keyword">return</span> (</span><br><span class="line">                   <span class="xml"><span class="tag">&lt;<span class="title">p</span>&gt;</span><span class="tag">&lt;<span class="title">span</span>&gt;</span>&#123;this.state.say&#125;<span class="tag">&lt;/<span class="title">span</span>&gt;</span>你一共点击了&#123;this.props.number&#125;下<span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line">                )</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    React.render( </span><br><span class="line">        <span class="xml"><span class="tag">&lt;<span class="title">Count</span> /&gt;</span>,</span><br><span class="line">        document.getElementById('app'),</span><br><span class="line">        function () &#123;</span><br><span class="line">          console.log('初次渲染完成！');</span><br><span class="line">        &#125;</span><br><span class="line">    );</span></span><br></pre></td></tr></table></figure>
+<p>我们来看看Count组件初次渲染的结果 :</p>
+<p><img src="/images/demo3/react2.png" alt="component 初始化"></p>
+<p>WONDERFUL!!! 看看是不是按照初次渲染组件的顺序去执行的这些函数~</p>
+<p>让我们点击一下，更新组件：</p>
+<p><img src="/images/demo3/react3.png" alt="component update"></p>
+<p>nice 是不是完全按照上面我说的顺序去执行这些function！！！<br>接下来，我们在上面Count组件的render方法改为：</p>
+<p><img src="/images/demo3/react4.png" alt="component"></p>
+<p>其中Show也是我定义的一个React component 在这里我实例化了Show这个组件2次，第一次传递了一个number参数，这个参数可以在Show组件内部通过this.props.number访问。</p>
+<p><img src="/images/demo3/react5.png" alt="component Show"></p>
+<p>第二个组件没有传递任何参数，我们看看getDefaultProps这个函数的执行情况：</p>
+<p><img src="/images/demo3/react6.png" alt="component Show"></p>
+<p>点击一下按钮，更新组件：</p>
+<p><img src="/images/demo3/react7.png" alt="component Show"></p>
+<p>可能比较乱，别急，咱们好好整理一下：</p>
+<ul>
+<li>我们可以看到子组件Show的 <code>getInitialState()</code>执行了2次，这也验证了我们前面所说的每次实例化组件都会执行<code>getInitialState()</code>这个函数。</li>
+<li>子组件Show的 <code>getDefaultProps()</code>执行了1次，同样验证了我们前面所说的每一个组件在实例化的时候（不管有几次复用）都将只会执行一次<code>getDefaultProps()</code>这么默认的props将会在实例化的组件之间所公用。</li>
+<li>如果父组件（就像上面所提到的Count组件）木有给子组件赋值(上面的number)，则子组件会使用defaultProps，如果父组件有赋值的话会优先使用这个值。这里也可以看到我上面说所的，组件就像状态机一样，不同的状态有着不同的特定执行函数。</li>
+</ul>
+<h3 id="注意">注意</h3><ul>
+<li><code>setState()</code>方法是异步的。当我们使用<code>setState()</code>设定一个新的state的时候，立即访问state可能会是现有的值（<code>setState()</code>之前的值）。<a href="http://reactjs.cn/react/docs/component-api.html#setstate" target="_blank" rel="external">可以看这里</a></li>
+<li>React Component的<code>render()</code>方法应该是纯净的，里面不应该用来处理复杂的数据 </li>
+</ul>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/JavaScript/">JavaScript</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/JavaScript框架/">JavaScript框架</a>
+  </div>
+
+        
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+<section id="comment">
+  <h1 class="title">留言</h1>
+  <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="/2015/08/25/javascript/react/" data-title="浅识React" data-url="http://www.hisimmer.com/2015/08/25/javascript/react/"></div>
+    <!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"simmer"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共JS代码 end -->
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Google一下">
+    <input type="hidden" name="q" value="site:www.hisimmer.com">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/JavaScript/">JavaScript</a><small>9</small></li>
+  
+    <li><a href="/categories/css/">css</a><small>3</small></li>
+  
+    <li><a href="/categories/日记/">日记</a><small>2</small></li>
+  
+    <li><a href="/categories/项目/">项目</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  <div class="friendly-link">
+<h3>码农圈:</h3>
+    <ul>
+        <li><a href="http://zhangwenli.com/blog" title="羡辙杂俎">羡辙杂俎</a></li>
+        <li><a href="http://helen123.gitcafe.io/" title="Bicycle's Blog">Bicycle</a></li>
+        <li><a href="http://www.iyuxy.com/" target="_blank" title="喻小佑's Blog">喻小佑</a></li>
+        <li><a href="http://gaohaoyang.github.io/about/" target="_blank" title="Hyg's Blog">Hyg</a></li>
+        <li><a href="http://www.anotherhome.net/" target="_blank" title="Anotherhome">Anotherhome</a></li>
+        <li><a href="http://halamyc.me/" target="_blank" title="halamyc's blog">HalaMyc</a></li>
+        <li><a href="http://iflsy.com/pgy/" target="_blank" title="彭光宇's blog">彭光宇</a></li>
+        <li><a href="http://www.xheldon.com/" target="_blank" title="Xheldon's blog">Xheldon</a></li>
+        <li><a href="https://ymr.me/" target="_blank" title="ymr's blog">ymr</a></li>
+    </ul> 
+    <p>欢迎交换友链~</p>
+</div>
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="footer"><div class="foot-container">
+    <div class="alignleft alignleft-2">
+     <h2 class="foot-h2">Where to study?</h2>
+     <p ><a href="http://www.w3ctech.com/">w3cTech</a>|<a href="http://www.imooc.com/">imooc</a>|<a href="https://www.github.com/">GitHub</a></p>
+     <p ><a href="http://ued.taobao.org/blog/">淘宝UED</a>|<a href="http://fex.baidu.com/">百度FEX</a></p>
+    </div>
+    <div class="alignleft alignleft-2">
+        <h2 class="foot-h2">Have problem？</h2>
+        <p ><a href="http://stackoverflow.com/">StackOverflow</a>|<a href="http://segmentfault.com/">SegmentFault</a>
+    </div>
+    <div class="alignleft alignleft-2">
+        <h2 class="foot-h2">Focus on</h2>
+        <p ><a href="https://facebook.github.io/react/">React</a>|<a href="https://facebook.github.io/flux/">Flux</a>
+    </div>
+    <div class="foot-foot">
+        
+      <p>由<a href="https://hexo.io" title="hexo">hexo</a>强力驱动 || 感谢<a href="https://gitcafe.com/">GitCafe</a>提供主机</p>
+      <p><span id="busuanzi_container_site_uv">
+      欢迎！第<span id="busuanzi_value_site_uv"></span> 位来访的小伙伴!
+    </span></p>
+    <p>&copy; 2015 Simmer</p>
+      
+    </div>
+    </div>
+    <div class="clearfix"></div>
+    
+</div>
+<div id="go-pg-top" style="display: block; opacity: 0.6;" title="返回顶部"><i class="icon-arrow-up"></i></div>
+</footer>
+  <script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+</body>
+</html>

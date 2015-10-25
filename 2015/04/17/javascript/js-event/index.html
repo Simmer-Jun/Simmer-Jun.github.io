@@ -1,0 +1,235 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>浅淡JavaScript事件 | Simmer</title>
+  <meta name="author" content="Simmer">
+  
+  <meta name="description" content="前端工程师-Simmer的博客">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="浅淡JavaScript事件"/>
+  <meta property="og:site_name" content="Simmer"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/images/favicon.jpg" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Simmer" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div id="header-cont">
+    <div class="alignleft">
+      <h1><a href="http://www.hisimmer.com/">司马</a></h1>
+      <h2><a href="http://www.hisimmer.com/">普通人，只会读书，锻炼，写代码。</a></h2>
+    </div>
+    <nav id="main-nav" class="alignright">
+      <ul>
+        
+          <li><a href="http://www.hisimmer.com/">Home</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+          <li><a href="/archives">Archives</a></li>
+        
+          <li><a href="/2015/03/01/other/work/">作品集</a></li>
+        
+          <li><a href="http://simmer.sinaapp.com/about/index.html">在线简历</a></li>
+        
+          <li><a href="http://simmer-jun.github.io/BKFE/index.html">gitbook</a></li>
+        
+      </ul>
+      <div class="clearfix"></div>
+    </nav>
+    <div class="clearfix"></div>
+</div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <time datetime="2015-04-17T12:20:59.000Z"><a href="/2015/04/17/javascript/js-event/">2015-04-17</a></time>
+      
+      
+  
+    <h1 class="title">浅淡JavaScript事件</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h4 id="写在前面">写在前面</h4><p>这几天恰巧在学习JavaScript事件，对于一些方面还是不太清楚，索性就自己写一篇博文。<br>*注意：本博文参考来自：<a href="http://www.w3cfuns.com/article-5596870-1-1.html" target="_blank" rel="external">W3Cfuns</a> 具体可参考博文，以下是个人的总结。</p>
+<h2 id="事件的分类">事件的分类</h2><p>事件是JavaScript跳动的心脏，通过JavaScript我们可以监听特点的事件，在事件发生的时候执行相应的js程序以作出反应。<br>在今天的事件中，由于历史的原因，事件分为DOM标准的事件模型（支持事件捕获与冒泡型）和IE特有的事件模型（冒泡型事件）。但是由于W3C标准的推进，目前的DOM标准已经将IE的冒泡型事件吸收到其中。<br>*注意，目前支持DOM标准的浏览器（Firefox，chrome,Safari,Opera)等都支持DOM标准的事件模型（addEventListener(type,handler,false/true)其中false指的是事件在冒泡阶段被调用，true值得是事件在捕获阶段被调用），而IE仍然使用自己专有的冒泡型事件模型attach(“on”+type,handler)。<br><a id="more"></a></p>
+<h4 id="兼容">兼容</h4><p>既然IE和DOM标准使用不同的句柄，那当然得考虑兼容性–<br>首先，在我们运用JavaScript事件的时候难免需要用到以下方面：</p>
+<ul>
+<li>事件的添加及删除</li>
+<li>事件对象的引用</li>
+<li>停止事件冒泡和阻止事件的默认行为</li>
+</ul>
+<h4 id="事件的添加及删除">事件的添加及删除</h4><p>简单的事件句柄及事件监听器概念，在此就不再谈论，详情见<a href="http://www.w3cfuns.com/article-5596870-1-1.html" target="_blank" rel="external">博文</a>，讲的比我详细。<br>    对于事件监听器事件的添加及删除，兼容性代码如下：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> eventUtil=&#123;</span><br><span class="line">	addHandler:<span class="function"><span class="keyword">function</span>(<span class="params">element,type,handler</span>)</span>&#123;<span class="comment">//添加事件句柄</span></span><br><span class="line">		<span class="keyword">if</span>(element.addEventListener)&#123;</span><br><span class="line">			element.addEventListener(type,handler,<span class="literal">false</span>);<span class="comment">//在事件冒泡阶段被调用,DOM2</span></span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span> (element.attchEvent)&#123;<span class="comment">//兼容IE</span></span><br><span class="line">				element.attachEvent(<span class="string">"on"</span>+type,handler);<span class="comment">//IE特有的事件，要加上"on"</span></span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				element[<span class="string">"on"</span>+type]=handler;<span class="comment">//DOM0,要加上"on"</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;,<span class="comment">//对象属性之间的分号要记得加上！！！</span></span><br><span class="line">	removeHandler:<span class="function"><span class="keyword">function</span>(<span class="params">element,type,type</span>)</span>&#123;<span class="comment">//删除事件句柄</span></span><br><span class="line">		<span class="keyword">if</span>(element.addEventListener)&#123;</span><br><span class="line">			element.addEventListener(type,handler,<span class="literal">false</span>);<span class="comment">//添加的时候是冒泡阶段被调用，</span></span><br><span class="line">			这里最后一项也应该填<span class="literal">false</span></span><br><span class="line">		&#125;<span class="keyword">else</span> <span class="keyword">if</span> (element.detachEvent)&#123;</span><br><span class="line">			element.detachEvent(<span class="string">"on"</span>+type,handler);</span><br><span class="line">		&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">			element[<span class="string">"on"</span>+type]=<span class="literal">null</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="事件对象的引用">事件对象的引用</h4><p>当我们在执行事件程序时候，往往需要获得对事件对象的引用。在这里IE又和其他支持W3C标准的浏览器不一样了。这里引用原文：”如事件模型一样，IE 和其他浏览器处理方法不同：IE 使用一个叫做 event 的全局事件对象来处理对象（它可以在全局变量window.event中找到），而其它所有浏览器采用的 W3C 推荐的方式，则使用独立的包含事件对象的参数传递。”<br>兼容性代码如下：<br><figure class="highlight js"><figcaption><span>J</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> eventUtil=&#123;</span><br><span class="line">	getEvent:<span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> event?event:<span class="built_in">window</span>.event;<span class="comment">//获得事件对象</span></span><br><span class="line">	&#125;,</span><br><span class="line">	getTatget:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> event.target || event.srcElement;</span><br><span class="line">		<span class="comment">//获得事件对象的标签</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="停止事件冒泡和阻止事件的默认行为">停止事件冒泡和阻止事件的默认行为</h4><p>引用作者原话：<br>“停止事件冒泡“和”阻止浏览器的默认行为“，这两个概念非常重要，它们对复杂的应用程序处理非常有用。<br>1.停止事件冒泡<br>停止事件冒泡是指，停止冒泡型事件的进一步传递（取消事件传递,不只是停止IE和DOM标准共有的冒泡型事件，我们还可以停止支持DOM标准浏览器的捕捉型事件，用topPropagation()方法）。例如上图中的冒泡型事件传递中，在body处理停止事件传递后，位于上层的document的事件监听器就不再收到通知，不再被处理。<br>2.阻止事件的默认行为<br>停止事件的默认行为是指，通常浏览器在事件传递并处理完后会执行与该事件关联的默认动作（如果存在这样的动作）。例如，如果表单中input type 属性是 “submit”，点击后在事件传播完浏览器就自动提交表单。又例如，input 元素的 keydown 事件发生并处理后，浏览器默认会将用户键入的字符自动追加到 input 元素的值中。</p>
+<h5 id="停止事件冒泡的处理方法代码如下：">停止事件冒泡的处理方法代码如下：</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">stopHandler</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">	event=event || <span class="built_in">window</span>.event;</span><br><span class="line">	<span class="keyword">if</span>(event.stopPropagation)&#123;</span><br><span class="line">		event.stopPropagation();<span class="comment">//DOM标准</span></span><br><span class="line">	&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">		event.cancelBubble = <span class="literal">true</span>;<span class="comment">//IE阻止事件冒泡</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="阻止事件的默认行为的代码如下：">阻止事件的默认行为的代码如下：</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">stopDefault</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">	event=event || <span class="built_in">window</span>.event;</span><br><span class="line">	<span class="keyword">if</span>(event.preventDefault)&#123;</span><br><span class="line">		event.preventDefault();<span class="comment">//DOM标准调用preventDefault()方法取消默认行为</span></span><br><span class="line">	&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">		event.returnValue = <span class="literal">false</span>;<span class="comment">//IE返回false取消默认行为</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/JavaScript/">JavaScript</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/IE-DOM/">IE&DOM</a>, <a href="/tags/Js事件流/">Js事件流</a>
+  </div>
+
+        
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+<section id="comment">
+  <h1 class="title">留言</h1>
+  <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="/2015/04/17/javascript/js-event/" data-title="浅淡JavaScript事件" data-url="http://www.hisimmer.com/2015/04/17/javascript/js-event/"></div>
+    <!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"simmer"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共JS代码 end -->
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Google一下">
+    <input type="hidden" name="q" value="site:www.hisimmer.com">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/JavaScript/">JavaScript</a><small>9</small></li>
+  
+    <li><a href="/categories/css/">css</a><small>3</small></li>
+  
+    <li><a href="/categories/日记/">日记</a><small>2</small></li>
+  
+    <li><a href="/categories/项目/">项目</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  <div class="friendly-link">
+<h3>码农圈:</h3>
+    <ul>
+        <li><a href="http://zhangwenli.com/blog" title="羡辙杂俎">羡辙杂俎</a></li>
+        <li><a href="http://helen123.gitcafe.io/" title="Bicycle's Blog">Bicycle</a></li>
+        <li><a href="http://www.iyuxy.com/" target="_blank" title="喻小佑's Blog">喻小佑</a></li>
+        <li><a href="http://gaohaoyang.github.io/about/" target="_blank" title="Hyg's Blog">Hyg</a></li>
+        <li><a href="http://www.anotherhome.net/" target="_blank" title="Anotherhome">Anotherhome</a></li>
+        <li><a href="http://halamyc.me/" target="_blank" title="halamyc's blog">HalaMyc</a></li>
+        <li><a href="http://iflsy.com/pgy/" target="_blank" title="彭光宇's blog">彭光宇</a></li>
+        <li><a href="http://www.xheldon.com/" target="_blank" title="Xheldon's blog">Xheldon</a></li>
+        <li><a href="https://ymr.me/" target="_blank" title="ymr's blog">ymr</a></li>
+    </ul> 
+    <p>欢迎交换友链~</p>
+</div>
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="footer"><div class="foot-container">
+    <div class="alignleft alignleft-2">
+     <h2 class="foot-h2">Where to study?</h2>
+     <p ><a href="http://www.w3ctech.com/">w3cTech</a>|<a href="http://www.imooc.com/">imooc</a>|<a href="https://www.github.com/">GitHub</a></p>
+     <p ><a href="http://ued.taobao.org/blog/">淘宝UED</a>|<a href="http://fex.baidu.com/">百度FEX</a></p>
+    </div>
+    <div class="alignleft alignleft-2">
+        <h2 class="foot-h2">Have problem？</h2>
+        <p ><a href="http://stackoverflow.com/">StackOverflow</a>|<a href="http://segmentfault.com/">SegmentFault</a>
+    </div>
+    <div class="alignleft alignleft-2">
+        <h2 class="foot-h2">Focus on</h2>
+        <p ><a href="https://facebook.github.io/react/">React</a>|<a href="https://facebook.github.io/flux/">Flux</a>
+    </div>
+    <div class="foot-foot">
+        
+      <p>由<a href="https://hexo.io" title="hexo">hexo</a>强力驱动 || 感谢<a href="https://gitcafe.com/">GitCafe</a>提供主机</p>
+      <p><span id="busuanzi_container_site_uv">
+      欢迎！第<span id="busuanzi_value_site_uv"></span> 位来访的小伙伴!
+    </span></p>
+    <p>&copy; 2015 Simmer</p>
+      
+    </div>
+    </div>
+    <div class="clearfix"></div>
+    
+</div>
+<div id="go-pg-top" style="display: block; opacity: 0.6;" title="返回顶部"><i class="icon-arrow-up"></i></div>
+</footer>
+  <script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+</body>
+</html>

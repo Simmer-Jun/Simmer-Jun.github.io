@@ -1,0 +1,290 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>百度IFE 作业总结： | Simmer</title>
+  <meta name="author" content="Simmer">
+  
+  <meta name="description" content="前端工程师-Simmer的博客">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="百度IFE 作业总结："/>
+  <meta property="og:site_name" content="Simmer"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/images/favicon.jpg" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Simmer" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div id="header-cont">
+    <div class="alignleft">
+      <h1><a href="http://www.hisimmer.com/">司马</a></h1>
+      <h2><a href="http://www.hisimmer.com/">普通人，只会读书，锻炼，写代码。</a></h2>
+    </div>
+    <nav id="main-nav" class="alignright">
+      <ul>
+        
+          <li><a href="http://www.hisimmer.com/">Home</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+          <li><a href="/archives">Archives</a></li>
+        
+          <li><a href="/2015/03/01/other/work/">作品集</a></li>
+        
+          <li><a href="http://simmer.sinaapp.com/about/index.html">在线简历</a></li>
+        
+          <li><a href="http://simmer-jun.github.io/BKFE/index.html">gitbook</a></li>
+        
+      </ul>
+      <div class="clearfix"></div>
+    </nav>
+    <div class="clearfix"></div>
+</div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <time datetime="2015-05-01T09:17:21.000Z"><a href="/2015/05/01/other/may-one/">2015-05-01</a></time>
+      
+      
+  
+    <h1 class="title">百度IFE 作业总结：</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="关于百度IFE_task0001/0002的一些总结">关于百度IFE task0001/0002的一些总结</h2><p>导师<a href="https://github.com/markfan" title="markfan&#39;s github" target="_blank" rel="external">markfan</a>对我作业的<a href="https://github.com/baidu-ife/ife/pull/642" target="_blank" rel="external">评语</a>:</p>
+<ol>
+<li>缩进统一使用4个空格</li>
+<li>title=”logo”吧 图片最好设下宽高，避免加载过程中的页面抖动</li>
+<li>缩进统一4个空格，多个选择器之间换行，参考css编码规范</li>
+<li>公共样式和具体页面样式分开，放在不同的样式文件中，在需要的页面中分别引用</li>
+<li>a 元素里面是img元素的时候，最好给img元素设置 border: none; 否则低版本IE会显示图片边框img元素最好设置 display:block,否则图片下面会有3px留白</li>
+<li>css属性冒号后必须有个空格</li>
+<li>颜色值 格式要统一，例如不要一会 #FFF 一会#FFFFFF</li>
+<li>颜色值格式统一用16进制，用rgba来设置透明度并不是所有浏览器都支持</li>
+<li>IE6 7透明度设置用 progid:DXImageTransform.Microsoft.Alpha(Opacity=xx)</li>
+<li>尽量不要使用id选择器</li>
+<li>尽量不要在元素上使用style属性，css尽量放在 样式文件中</li>
+<li>变量一行定义一个，参考js编码规范</li>
+<li>运算符两边要有一个空格，function关键字后面要有一个空格，左花括号前要有一个空格，参考js编码规范</li>
+<li>while if 等关键字后面要留一个空格，运算符两边要留一个空格， else 条件分支要另起一行</li>
+<li>getElementsByClassName 不是所有浏览器都支持<h3 id="由以上暴露了我的几个问题">由以上暴露了我的几个问题</h3>1 可以看出我对于CSS及JavaScript编码规范还不是很了解，所以我查阅了相关的资料找到了<a href="http://blog.163.com/hongshaoguoguo@126/blog/static/1804698120141195042367/" target="_blank" rel="external">这个</a>,<a href="http://www.cnblogs.com/2050/archive/2012/04/26/2470947.html" title="google的html、css代码规范" target="_blank" rel="external">这个</a>还有<a href="http://www.blogjava.net/brock/archive/2013/03/11/396284.html" title="Google JavaScript 编码规范指南" target="_blank" rel="external">这个</a>。<br>2 对于css一些基本的hack不了解（主要是兼容低版本IE。mark了一下w3cfuns上面的关于css hack的文章，详情见<a href="http://www.w3cfuns.com/article-1317-1-1.html" title="css hack" target="_blank" rel="external">这里</a>and<a href="http://www.w3cfuns.com/thread-261-1-1.html" target="_blank" rel="external">这里</a>。<br>3 Javascript基础薄弱（需要加强对于基本类型的属性/方法的了解，BOM/DOM操作）<br>4 对于基本的一些布局还不是很掌握（自己觉得）<a id="more"></a>
+<h3 id="Task0002总结">Task0002总结</h3>Task0002<a href="https://github.com/baidu-ife/ife/tree/master/task/task0002" target="_blank" rel="external">github地址</a></li>
+</ol>
+<p>导航：</p>
+<ul>
+<li><a href="#1">JavaScript数据类型及语言基础</a></li>
+<li><a href="#2">DOM</a></li>
+<li><a href="#3">事件</a></li>
+<li><a href="#4">BOM</a></li>
+<li><a href="#5">AJAX</a></li>
+<li><a href="#6">小练习1</a></li>
+<li><a href="#7">小练习2</a></li>
+<li><a href="#8">小练习3</a></li>
+<li><a href="#9">小练习4</a></li>
+<li><a href="#10">小练习5</a><h4 id="1">JavaScript数据类型及语言基础</h4>
+
+</li>
+</ul>
+<h5>第一题：数据类型判断</h5>
+
+<p>before:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 判断arr是否为一个数组，返回一个bool值</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isArray</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (arr <span class="keyword">instanceof</span> <span class="built_in">Array</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>after:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 判断arr是否为一个数组，返回一个bool值</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isArray</span>(<span class="params">arr</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">Object</span>.prototype.toString.apply(arr) === <span class="string">"[object Array]"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(isArray([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]));<span class="comment">// true</span></span><br></pre></td></tr></table></figure><br>为什么要使用<strong>Object.prototype.toString</strong>？因为<code>a instanceof b</code>是基于<strong>原型链</strong>查找的方式，在不同的iframe及window下会判断不准(可能a和b来自不同的iframe，则他们的原型链不可能相等)</p>
+<p>关于<code>Object.prototype.toString</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//IE9+(包括IE9)/Firefox/chrome 结果</span></span><br><span class="line">	<span class="keyword">var</span> a = <span class="built_in">Object</span>.prototype.toString.apply(<span class="literal">undefined</span>);</span><br><span class="line">	<span class="built_in">console</span>.log(a);<span class="comment">// "[object Undefined]"</span></span><br><span class="line">	<span class="keyword">var</span> b = <span class="built_in">Object</span>.prototype.toString.apply(<span class="literal">null</span>);</span><br><span class="line">	<span class="built_in">console</span>.log(b);<span class="comment">// "[object Null]"</span></span><br><span class="line">	<span class="keyword">var</span> c = <span class="built_in">Object</span>.prototype.toString.apply([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]);</span><br><span class="line">	<span class="built_in">console</span>.log(c);<span class="comment">// "[object Array]"</span></span><br><span class="line">	<span class="keyword">var</span> d = <span class="built_in">Object</span>.prototype.toString.apply(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;);</span><br><span class="line">	<span class="built_in">console</span>.log(d);<span class="comment">// "[object Function]"</span></span><br><span class="line">	<span class="keyword">var</span> e = <span class="built_in">Object</span>.prototype.toString.apply(&#123;name:<span class="string">"simmer"</span>,age:<span class="string">"23"</span>&#125;);</span><br><span class="line">	<span class="built_in">console</span>.log(e);<span class="comment">// "[object Object]"</span></span><br><span class="line">	<span class="keyword">var</span> f = <span class="built_in">Object</span>.prototype.toString.apply(<span class="regexp">/ admin/i</span>);</span><br><span class="line">	<span class="built_in">console</span>.log(f);<span class="comment">// "[object RegExp]"</span></span><br><span class="line">	<span class="keyword">var</span> g = <span class="built_in">Object</span>.prototype.toString.apply(<span class="literal">true</span>);</span><br><span class="line">	<span class="built_in">console</span>.log(g);<span class="comment">// "[object Boolean]"</span></span><br><span class="line">	<span class="keyword">var</span> h = <span class="built_in">Object</span>.prototype.toString.apply(<span class="string">"hello world"</span>);</span><br><span class="line">	<span class="built_in">console</span>.log(h);<span class="comment">// "[object String]"</span></span><br><span class="line">	<span class="keyword">var</span> i = <span class="built_in">Object</span>.prototype.toString.apply(<span class="number">666</span>);</span><br><span class="line">	<span class="built_in">console</span>.log(i);<span class="comment">// "[object Number]"</span></span><br></pre></td></tr></table></figure></p>
+<p>注意，在IE6/7/8下判断”null”与”undefined”会有点不同<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//IE5/6/7/8下则有点不同</span></span><br><span class="line">	<span class="keyword">var</span> a = <span class="built_in">Object</span>.prototype.toString.apply(<span class="literal">undefined</span>);</span><br><span class="line">	<span class="built_in">console</span>.log(a);<span class="comment">// "[object Object]"</span></span><br><span class="line">	<span class="keyword">var</span> b = <span class="built_in">Object</span>.prototype.toString.apply(<span class="literal">null</span>);</span><br><span class="line">	<span class="built_in">console</span>.log(b);<span class="comment">// "[object Object]"</span></span><br><span class="line">	<span class="keyword">var</span> c = <span class="built_in">Object</span>.prototype.toString.apply([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]);</span><br><span class="line">	<span class="built_in">console</span>.log(c);<span class="comment">// "[object Array]"</span></span><br><span class="line">	<span class="keyword">var</span> d = <span class="built_in">Object</span>.prototype.toString.apply(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;);</span><br><span class="line">	<span class="built_in">console</span>.log(d);<span class="comment">// "[object Function]"</span></span><br><span class="line">	<span class="keyword">var</span> e = <span class="built_in">Object</span>.prototype.toString.apply(&#123;name:<span class="string">"simmer"</span>,age:<span class="string">"23"</span>&#125;);</span><br><span class="line">	<span class="built_in">console</span>.log(e);<span class="comment">// "[object Object]"</span></span><br><span class="line">	<span class="keyword">var</span> f = <span class="built_in">Object</span>.prototype.toString.apply(<span class="regexp">/ admin/i</span>);</span><br><span class="line">	<span class="built_in">console</span>.log(f);<span class="comment">// "[object RegExp]"</span></span><br><span class="line">	<span class="keyword">var</span> g = <span class="built_in">Object</span>.prototype.toString.apply(<span class="literal">true</span>);</span><br><span class="line">	<span class="built_in">console</span>.log(g);<span class="comment">// "[object Boolean]"</span></span><br><span class="line">	<span class="keyword">var</span> h = <span class="built_in">Object</span>.prototype.toString.apply(<span class="string">"hello world"</span>);</span><br><span class="line">	<span class="built_in">console</span>.log(h);<span class="comment">// "[object String]"</span></span><br><span class="line">	<span class="keyword">var</span> i = <span class="built_in">Object</span>.prototype.toString.apply(<span class="number">666</span>);</span><br><span class="line">	<span class="built_in">console</span>.log(i);<span class="comment">// "[object Number]"</span></span><br></pre></td></tr></table></figure><br>学到了什么？</p>
+<ul>
+<li><code>typeof</code>用于基本类型检测和函数类检测，返回结果为字符串。注意<code>typeof NaN</code>返回”number” <code>typeof null</code>返回”object”(这个比较奇怪，要注意)。</li>
+<li><code>instanceof</code>是基于原型链，所以在跨框架时候需要注意避免使用这种判断数据类型方法</li>
+<li><code>Object.prototype.toString</code>则比较合适，但需注意在判断”null”与”undefined”的时候，IE9以下浏览器的兼容性。</li>
+<li>还有一种<code>constructor</code>方法也可以判断数据类型，但是因为它可以被改写所以使用有风险，不推荐使用。</li>
+<li>最后一种是使用<code>duck type</code>方法，它的是想就是通过判断一些基本类型特有的方法或属性来判断数据类型。(比如用数组特有的<code>push()</code>方法来判断是否为数组等)</li>
+<li>墙裂推荐慕课网的<a href="http://www.imooc.com/video/5677" target="_blank" rel="external">这个</a>视频，简直棒。</li>
+</ul>
+<p></p><h5>第二题：使用递归来实现一个深度克隆</h5><br>before就不贴了，被导师批了。。。<p></p>
+<p>after</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 判断arr是否为一个数组，返回一个bool值</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isArray</span>(<span class="params">arr</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">Object</span>.prototype.toString.apply(arr) == <span class="string">"[object Array]"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 判断fn是否为一个函数，返回一个bool值</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isFunction</span>(<span class="params">fn</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">Object</span>.prototype.toString.apply(fn) == <span class="string">"[object Function]"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 判断reg是否为一个函数，返回一个bool值</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isReg</span>(<span class="params">reg</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">Object</span>.prototype.toString.apply(reg) == <span class="string">"[object RegExp]"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 判断reg是否为一个函数，返回一个bool值</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isDate</span>(<span class="params">date</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">Object</span>.prototype.toString.apply(date) == <span class="string">"[object Date]"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(isArray([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]));<span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用递归来实现一个深度克隆，可以复制一个目标对象，返回一个完整拷贝</span></span><br><span class="line"><span class="comment">// 被复制的对象类型会被限制为数字、字符串、布尔、日期、数组、Object对象。不会包含函数、正则对象等</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">cloneObject</span>(<span class="params">obj</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> a;</span><br><span class="line">	<span class="keyword">var</span> i;</span><br><span class="line">	<span class="keyword">var</span> j;</span><br><span class="line">	<span class="keyword">if</span> (isFunction(obj)) &#123;<span class="comment">// 不复制函数</span></span><br><span class="line">		<span class="keyword">return</span> ;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (isReg(obj)) &#123;<span class="comment">// 不复制正则</span></span><br><span class="line">		<span class="keyword">return</span> ;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> ((<span class="keyword">typeof</span>(obj) !=<span class="string">"Object"</span>) || (obj === <span class="literal">null</span>)) &#123;<span class="comment">// 基本类型的复制</span></span><br><span class="line">		<span class="keyword">return</span> obj;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (isDate(obj)) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Date</span>(obj.getTime());<span class="comment">// 获得日期对象时间</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (isArray(obj)) &#123; <span class="comment">// 复制数组</span></span><br><span class="line">		a = [];</span><br><span class="line">		j = obj.length;</span><br><span class="line">		<span class="keyword">for</span> (i=<span class="number">0</span>; i&lt; j;i++) &#123; <span class="comment">// 循环检测数组</span></span><br><span class="line">			<span class="keyword">if</span> ( <span class="keyword">typeof</span>(obj[i]) == <span class="string">"object"</span> &amp;&amp; obj[i] !=<span class="literal">null</span>) &#123; <span class="comment">// 如果是对象</span></span><br><span class="line">				a[i] = <span class="built_in">arguments</span>.callee(obj[i]); <span class="comment">// 则使用arguments.callee方法递归调用本身</span></span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				a[i] = j[i];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> a; <span class="comment">//返回数组</span></span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		a = &#123;&#125;; <span class="comment">// 复制对象</span></span><br><span class="line">		<span class="keyword">for</span> (i <span class="keyword">in</span> obj ) &#123; <span class="comment">// 遍历对象</span></span><br><span class="line">			<span class="keyword">if</span> ( <span class="keyword">typeof</span>(obj[i]) == <span class="string">"object"</span> &amp;&amp; obj[i] !=<span class="literal">null</span>) &#123;<span class="comment">// 同上面数组的判断</span></span><br><span class="line">				a[i] = <span class="built_in">arguments</span>.callee(obj[i]);</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				a[i] = obj[i];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> a; <span class="comment">// 返回对象</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>学到了什么？</p>
+<ul>
+<li>数据类型的判断</li>
+<li>递归调用的理解</li>
+<li>数组遍历与对象遍历的不同。数组遍历将会遍历所有数组上的属性方法(当然前提是该属性/方法是可枚举的)，所以数组使用for循环来遍历数组的每一项。</li>
+<li>了解值类型和引用类型的区别，了解各种对象的读取、遍历方式。</li>
+</ul>
+<p>这部分剩下的题目暂时没有疑问，如果有疑问的童鞋请移步<a href="https://github.com/baidu-ife/ife/issues/765" target="_blank" rel="external">这里</a>看看其他童鞋的代码。<br>JavaScript数据类型及语言基础参考资料：</p>
+<ul>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array" target="_blank" rel="external">MDN Array</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank" rel="external">MDN String</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Number" target="_blank" rel="external">MDN Number</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/RegExp" target="_blank" rel="external">MDN 正则</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Data_structures" target="_blank" rel="external">JavaScript 数据结构</a></li>
+</ul>
+<h4 id="2">DOM</h4>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/JavaScript/">JavaScript</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/个人总结/">个人总结</a>
+  </div>
+
+        
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+<section id="comment">
+  <h1 class="title">留言</h1>
+  <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="/2015/05/01/other/may-one/" data-title="百度IFE 作业总结：" data-url="http://www.hisimmer.com/2015/05/01/other/may-one/"></div>
+    <!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"simmer"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共JS代码 end -->
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Google一下">
+    <input type="hidden" name="q" value="site:www.hisimmer.com">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/JavaScript/">JavaScript</a><small>9</small></li>
+  
+    <li><a href="/categories/css/">css</a><small>3</small></li>
+  
+    <li><a href="/categories/日记/">日记</a><small>2</small></li>
+  
+    <li><a href="/categories/项目/">项目</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  <div class="friendly-link">
+<h3>码农圈:</h3>
+    <ul>
+        <li><a href="http://zhangwenli.com/blog" title="羡辙杂俎">羡辙杂俎</a></li>
+        <li><a href="http://helen123.gitcafe.io/" title="Bicycle's Blog">Bicycle</a></li>
+        <li><a href="http://www.iyuxy.com/" target="_blank" title="喻小佑's Blog">喻小佑</a></li>
+        <li><a href="http://gaohaoyang.github.io/about/" target="_blank" title="Hyg's Blog">Hyg</a></li>
+        <li><a href="http://www.anotherhome.net/" target="_blank" title="Anotherhome">Anotherhome</a></li>
+        <li><a href="http://halamyc.me/" target="_blank" title="halamyc's blog">HalaMyc</a></li>
+        <li><a href="http://iflsy.com/pgy/" target="_blank" title="彭光宇's blog">彭光宇</a></li>
+        <li><a href="http://www.xheldon.com/" target="_blank" title="Xheldon's blog">Xheldon</a></li>
+        <li><a href="https://ymr.me/" target="_blank" title="ymr's blog">ymr</a></li>
+    </ul> 
+    <p>欢迎交换友链~</p>
+</div>
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="footer"><div class="foot-container">
+    <div class="alignleft alignleft-2">
+     <h2 class="foot-h2">Where to study?</h2>
+     <p ><a href="http://www.w3ctech.com/">w3cTech</a>|<a href="http://www.imooc.com/">imooc</a>|<a href="https://www.github.com/">GitHub</a></p>
+     <p ><a href="http://ued.taobao.org/blog/">淘宝UED</a>|<a href="http://fex.baidu.com/">百度FEX</a></p>
+    </div>
+    <div class="alignleft alignleft-2">
+        <h2 class="foot-h2">Have problem？</h2>
+        <p ><a href="http://stackoverflow.com/">StackOverflow</a>|<a href="http://segmentfault.com/">SegmentFault</a>
+    </div>
+    <div class="alignleft alignleft-2">
+        <h2 class="foot-h2">Focus on</h2>
+        <p ><a href="https://facebook.github.io/react/">React</a>|<a href="https://facebook.github.io/flux/">Flux</a>
+    </div>
+    <div class="foot-foot">
+        
+      <p>由<a href="https://hexo.io" title="hexo">hexo</a>强力驱动 || 感谢<a href="https://gitcafe.com/">GitCafe</a>提供主机</p>
+      <p><span id="busuanzi_container_site_uv">
+      欢迎！第<span id="busuanzi_value_site_uv"></span> 位来访的小伙伴!
+    </span></p>
+    <p>&copy; 2015 Simmer</p>
+      
+    </div>
+    </div>
+    <div class="clearfix"></div>
+    
+</div>
+<div id="go-pg-top" style="display: block; opacity: 0.6;" title="返回顶部"><i class="icon-arrow-up"></i></div>
+</footer>
+  <script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+</body>
+</html>

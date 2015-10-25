@@ -1,0 +1,237 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>博客从GitHub迁移至GitCafe | Simmer</title>
+  <meta name="author" content="Simmer">
+  
+  <meta name="description" content="前端工程师-Simmer的博客">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="博客从GitHub迁移至GitCafe"/>
+  <meta property="og:site_name" content="Simmer"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/images/favicon.jpg" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Simmer" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div id="header-cont">
+    <div class="alignleft">
+      <h1><a href="http://www.hisimmer.com/">司马</a></h1>
+      <h2><a href="http://www.hisimmer.com/">普通人，只会读书，锻炼，写代码。</a></h2>
+    </div>
+    <nav id="main-nav" class="alignright">
+      <ul>
+        
+          <li><a href="http://www.hisimmer.com/">Home</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+          <li><a href="/archives">Archives</a></li>
+        
+          <li><a href="/2015/03/01/other/work/">作品集</a></li>
+        
+          <li><a href="http://simmer.sinaapp.com/about/index.html">在线简历</a></li>
+        
+          <li><a href="http://simmer-jun.github.io/BKFE/index.html">gitbook</a></li>
+        
+      </ul>
+      <div class="clearfix"></div>
+    </nav>
+    <div class="clearfix"></div>
+</div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <time datetime="2015-08-22T17:00:26.000Z"><a href="/2015/08/23/other/realmname/">2015-08-23</a></time>
+      
+      
+  
+    <h1 class="title">博客从GitHub迁移至GitCafe</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p><img src="/images/demo2/gitcafe.png" alt="GitCafe"><br><a id="more"></a><br>今天早上起来按例访问<a href="https://github.com/" target="_blank" rel="external">github</a>,发现悲剧的无法正常打开，然后看我的博客就已经无法打开了（博客搭建在github上）。<br><img src="/images/demo2/errgithub.png" alt="无法打开github"><br>以前也出现了几次，想着实在是无法忍受这种随时到来的“惊喜”了，所幸就想着转移阵地。但是把博客搬到哪里去好呢？。。。。然后，我将目标瞄准了<a href="https://gitcafe.com/" target="_blank" rel="external">GitCafe</a></p>
+<h3 id="关于GitCafe">关于GitCafe</h3><p><img src="/images/demo2/jiesaogitcafe.png" alt="GitCafe主页"><br>Git是目前世界上最流行最优秀的项目版本控制系统之一，Cafe的意思为咖啡馆，象征着程序员文化。在GitCafe这个平台上，开发者可以轻松的在线协作共同开发出一个又一个开源或者私有项目。通过GitCafe，开发项目的控制与团队管理将变得方便与有效。</p>
+<p>在GitCafe的网站以及团队，我希望每一个用户和员工都能感受到浓厚纯正的黑客精神与文化，发现和理解计算机技术的真正魅力与潜力，激励每一位中国的开发者去开发出更多更有趣的东西。</p>
+<p>开放，分享与协作<br>一个能够让你感受到无私力量的社区</p>
+<h3 id="搬迁结果">搬迁结果</h3><p>好吧，我知道没图你们是不会相信的。下面我们看看搬迁前和搬迁后博客访问的延迟情况。<br>GitHub上的博客地址为：<code>username.github.io</code>,GitCafe上的博客地址为：<code>username.gitcafe.io</code> 然后我私底下在万网上买了一个域名<code>hisimmer.com</code></p>
+<h3 id="搬迁前">搬迁前</h3><p>我们来看下搬迁前的延迟<br><img src="/images/demo2/pgithub.png" alt="github延迟"><br>我们看到延迟最长达到242ms,这个速度在国内来说还是比较慢的。。。</p>
+<h3 id="搬迁后">搬迁后</h3><p>花了N多的功夫终于把博客成功搬迁到了GitCafe上了。<br>顺便把博客给稍微的“装修”了一下：</p>
+<p><img src="/images/demo2/blogindex.png" alt="github延迟"><br>so我们来看下现在 ping 的情况</p>
+<p><img src="/images/demo2/pgitcafe.png" alt="ping GitCafe"><br>棒！延迟情况好了很多啊 = o=<br>对于延迟数字大家可能没有什么映像，那这样的话我们以百度的首页为例：</p>
+<p><img src="/images/demo2/pbaidu.png" alt="ping Baidu"><br>百度在这上面不得不说赞啊，延迟能减到这么短，不过这也间接证明了GitCafe pages在国内的访问情况还是比GitHub好的多~（英明的决定！！！）<br>再来看下通过绑定的<code>hisimmer.com</code>域名访问的情况：</p>
+<p><img src="/images/demo2/hisimmer.png" alt="ping GitCafe"><br>咦？？怎么会有一个包丢了啊T - T 这个问题得写到备忘录里面，回头得去弄清楚！！！<br>关于如何使用GitCafe搭建博客并且绑定域名有许多的资料，也有很多的童鞋写了博客分享，在这里我就不多说了。资料整理如下：</p>
+<ul>
+<li><a href="https://help.gitcafe.com/manuals/help/pages-services" target="_blank" rel="external">官方GitCafe pages配置说明</a></li>
+<li><a href="http://www.sumrday.com/2014/09-18-Hello-Hexo.html" target="_blank" rel="external">Hexo部署在GitCafe</a></li>
+<li><a href="https://ruby-china.org/topics/18084" target="_blank" rel="external">同时使用GitHub与GitCafe托管博客</a></li>
+</ul>
+<p>github功能如此强大，我们不能放弃它哦~（坑爹的国内，好网站总是抱被墙T-T）</p>
+<p><img src="/images/demo2/github.png" alt="GitHub"></p>
+<h2 id="如何让github_和_gitcafe的ssh-key能够共存？">如何让github 和 gitcafe的ssh-key能够共存？</h2><p>请看官方<a href="https://gitcafe.com/GitCafe/Help/wiki/%E5%A6%82%E4%BD%95%E5%90%8C%E6%97%B6%E4%BD%BF%E7%94%A8%E5%A4%9A%E4%B8%AA%E5%85%AC%E7%A7%98%E9%92%A5" target="_blank" rel="external">文档说明</a></p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/其他/">其他</a>
+  </div>
+
+        
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+<section id="comment">
+  <h1 class="title">留言</h1>
+  <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="/2015/08/23/other/realmname/" data-title="博客从GitHub迁移至GitCafe" data-url="http://www.hisimmer.com/2015/08/23/other/realmname/"></div>
+    <!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"simmer"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共JS代码 end -->
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Google一下">
+    <input type="hidden" name="q" value="site:www.hisimmer.com">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/JavaScript/">JavaScript</a><small>9</small></li>
+  
+    <li><a href="/categories/css/">css</a><small>3</small></li>
+  
+    <li><a href="/categories/日记/">日记</a><small>2</small></li>
+  
+    <li><a href="/categories/项目/">项目</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  <div class="friendly-link">
+<h3>码农圈:</h3>
+    <ul>
+        <li><a href="http://zhangwenli.com/blog" title="羡辙杂俎">羡辙杂俎</a></li>
+        <li><a href="http://helen123.gitcafe.io/" title="Bicycle's Blog">Bicycle</a></li>
+        <li><a href="http://www.iyuxy.com/" target="_blank" title="喻小佑's Blog">喻小佑</a></li>
+        <li><a href="http://gaohaoyang.github.io/about/" target="_blank" title="Hyg's Blog">Hyg</a></li>
+        <li><a href="http://www.anotherhome.net/" target="_blank" title="Anotherhome">Anotherhome</a></li>
+        <li><a href="http://halamyc.me/" target="_blank" title="halamyc's blog">HalaMyc</a></li>
+        <li><a href="http://iflsy.com/pgy/" target="_blank" title="彭光宇's blog">彭光宇</a></li>
+        <li><a href="http://www.xheldon.com/" target="_blank" title="Xheldon's blog">Xheldon</a></li>
+        <li><a href="https://ymr.me/" target="_blank" title="ymr's blog">ymr</a></li>
+    </ul> 
+    <p>欢迎交换友链~</p>
+</div>
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="footer"><div class="foot-container">
+    <div class="alignleft alignleft-2">
+     <h2 class="foot-h2">Where to study?</h2>
+     <p ><a href="http://www.w3ctech.com/">w3cTech</a>|<a href="http://www.imooc.com/">imooc</a>|<a href="https://www.github.com/">GitHub</a></p>
+     <p ><a href="http://ued.taobao.org/blog/">淘宝UED</a>|<a href="http://fex.baidu.com/">百度FEX</a></p>
+    </div>
+    <div class="alignleft alignleft-2">
+        <h2 class="foot-h2">Have problem？</h2>
+        <p ><a href="http://stackoverflow.com/">StackOverflow</a>|<a href="http://segmentfault.com/">SegmentFault</a>
+    </div>
+    <div class="alignleft alignleft-2">
+        <h2 class="foot-h2">Focus on</h2>
+        <p ><a href="https://facebook.github.io/react/">React</a>|<a href="https://facebook.github.io/flux/">Flux</a>
+    </div>
+    <div class="foot-foot">
+        
+      <p>由<a href="https://hexo.io" title="hexo">hexo</a>强力驱动 || 感谢<a href="https://gitcafe.com/">GitCafe</a>提供主机</p>
+      <p><span id="busuanzi_container_site_uv">
+      欢迎！第<span id="busuanzi_value_site_uv"></span> 位来访的小伙伴!
+    </span></p>
+    <p>&copy; 2015 Simmer</p>
+      
+    </div>
+    </div>
+    <div class="clearfix"></div>
+    
+</div>
+<div id="go-pg-top" style="display: block; opacity: 0.6;" title="返回顶部"><i class="icon-arrow-up"></i></div>
+</footer>
+  <script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+</body>
+</html>

@@ -1,0 +1,269 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>CSS基本视觉格式化 | Simmer</title>
+  <meta name="author" content="Simmer">
+  
+  <meta name="description" content="前端工程师-Simmer的博客">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="CSS基本视觉格式化"/>
+  <meta property="og:site_name" content="Simmer"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/images/favicon.jpg" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Simmer" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div id="header-cont">
+    <div class="alignleft">
+      <h1><a href="http://www.hisimmer.com/">司马</a></h1>
+      <h2><a href="http://www.hisimmer.com/">普通人，只会读书，锻炼，写代码。</a></h2>
+    </div>
+    <nav id="main-nav" class="alignright">
+      <ul>
+        
+          <li><a href="http://www.hisimmer.com/">Home</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+          <li><a href="/archives">Archives</a></li>
+        
+          <li><a href="/2015/03/01/other/work/">作品集</a></li>
+        
+          <li><a href="http://simmer.sinaapp.com/about/index.html">在线简历</a></li>
+        
+          <li><a href="http://simmer-jun.github.io/BKFE/index.html">gitbook</a></li>
+        
+      </ul>
+      <div class="clearfix"></div>
+    </nav>
+    <div class="clearfix"></div>
+</div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <time datetime="2015-10-16T02:40:55.000Z"><a href="/2015/10/16/css/basicalvisual/">2015-10-16</a></time>
+      
+      
+  
+    <h1 class="title">CSS基本视觉格式化</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h1 id="基本视觉格式化">基本视觉格式化</h1><p>参考资料：《CSS权威指南》</p>
+<h1 id="块级元素">块级元素</h1><p>在开始之前，让我们来看看《CSS权威指南》提出的一些基本术语：<br><a id="more"></a></p>
+<blockquote>
+<p>正常流:<br> 这是指西方语言文本从左向右、从上到下显示，这也是我们熟悉的传统HTML文档的文本布局。注意，在非西方语言中，流方向可能不同。大多数元素都在正常流中，要让一个元素不在正常流中，唯一的办法就是使之成为浮动或定位元素。</p>
+<p>非替换元素:<br>如果元素的内容包含在文档中，则称之为非替换元素。例如，如果一个段落的内容都放在改元素本身之内，这个段落就是一个非替换元素。</p>
+<p>替换元素:<br>这是指用作为其他内容占位符的一个元素。替换元素的一个经典例子就是img元素，它只是指向一个图像文件，这个文件将插入到文档流中改img元素元素本身所在位置。大多数表单元素可以替换（例如，<code>&lt;input type=&quot;radio&quot;&gt;</code>）。</p>
+<p>块级元素:<br>这是指段落、标题或div之类的元素。这些元素在正常流中时，会在其框之前和之后生成“换行”，所以处于正常流中的块级元素会垂直摆放。通过声明<code>display: block</code>可以让元素生成块级框。</p>
+<p>行内元素:<br>这是指strong或span之类的元素。这些元素不会在之前或之后生成“行分隔符”，它是块级元素的后代。通过声明<code>display: inline</code>可以让元素生成一个行内框。</p>
+<p>根元素:<br>位于文档树顶端的元素。在HTML文档中，这就是html元素。在XML文档中，则可以是该语言允许的任何元素。</p>
+</blockquote>
+<p>几点都介绍的很清晰明了，这些概念在接下来的内容中会使用，请确保你已经熟悉以上几点。<br>为了了解块级元素，你必须对它的的边界和区域有一个清晰的了解。</p>
+<p><img src="/images/cssvisual/pic1.png" alt="块级元素"></p>
+<h2 id="水平视觉格式化">水平视觉格式化</h2><p>水平格式化往往比你想象的更复杂，这里需要注意的一点是，<code>width</code>影响的是内容区的宽度，而不是可见区域的宽度。<br>如果希望width影响的是可见区域的宽度，也许你需要了解一下CSS3的<code>box-sizing</code>属性。这里引用一下<a href="http://www.w3school.com.cn/cssref/pr_box-sizing.asp" target="_blank" rel="external">W3School</a>的解释：</p>
+<blockquote>
+<p>box-sizing: content-box   这是由 CSS2.1 规定的宽度高度行为。宽度和高度分别应用到元素的内容框。在宽度和高度之外绘制元素的内边距和边框。</p>
+<p>box-sizing: border-box 为元素设定的宽度和高度决定了元素的边框盒。就是说，为元素指定的任何内边距和边框都将在已设定的宽度和高度内进行绘制。通过从已设定的宽度和高度分别减去边框和内边距才能得到内容的宽度和高度。</p>
+</blockquote>
+<p>在下面的讲解中，默认<code>box-sizing : content-box</code>，对于<code>box-sizing : border-box</code>的情况可以类似比较得出。</p>
+<h3 id="水平属性">水平属性</h3><p>首先来看看块级元素的7大水平属性：</p>
+<p><img src="/images/cssvisual/pic2.png" alt="7大水平属性"></p>
+<ol>
+<li>由上图我们可以看到水平格式化的”7大水平属性”是：margin-left、border-left、padding-*left、width、padding-right、border-right、margin-right。</li>
+<li>也就是说，这7个属性加起来应该为块级元素父元素（一般也为块级元素）的width的取值（对于box-sizing为 contend-box而言）</li>
+</ol>
+<h2 id="垂直视觉格式化">垂直视觉格式化</h2><h3 id="垂直属性">垂直属性</h3><p>首先来看看块级元素的7大垂直属性：</p>
+<p><img src="/images/cssvisual/pic4.png" alt="7大垂直属性"></p>
+<ol>
+<li>默认地，height定义了内容区的高度，而不是可见元素框的高度。</li>
+<li>一般情况下块级元素父元素的height 等于块级元素的margin-top + border-top + padding-top + height + padding-bottom + border-bottom + margin-bottom</li>
+<li>这7个属性加起来应该为块级元素父元素（一般也为块级元素）的height的取值（对于box-sizing为 contend-box而言）</li>
+</ol>
+<h3 id="auto高度">auto高度</h3><ul>
+<li>这7个属性中有且仅有3个属性可以设置为auto:元素的内容height及上下外边距，上下内边距和上下边框必须设置一个特定的值或者为默认值0。</li>
+<li>不同于水平视觉格式化，设置块级元素上下外边距为auto并不会使得块级元素在父元素中居中，相反它们会默认取得0值。（注意：这种情况对于定位元素来说则有些不一样，见稍后分析）</li>
+<li>对于百分比高度，它相对的是父元素的高度来进行取值。但是如果没有显示的设置包含块的height，则百分数高度将会默认重置为auto。</li>
+<li>如果块级正常流元素的高度设置为auto且只有块级子元素时，其默认的高度将会是最高级块级子元素的外边框边界到最低块级子元素外边框边界之间的距离，也就是说，子元素的外边距将会’超出’包含这些子元素的元素。不过，如果块级元素有上写内边距或者是上下边框，则其高度将会是从其最高子元素的上外边距边界到其最低子元素的下外边距边界之间的距离。</li>
+</ul>
+<h3 id="垂直外边距合并">垂直外边距合并</h3><ul>
+<li>垂直格式化的另一个重要的方面是垂直相邻外边距的合并，这种合并只会应用于外边距。（与BFC有关，感兴趣的童鞋可以去看一下）</li>
+</ul>
+<h3 id="负外边距">负外边距</h3><ul>
+<li>CSS中允许元素的外边距为负值，这可以制造一些很实用的效果（比如经常用position + 负margin 实现元素的水平垂直居中）</li>
+</ul>
+<h1 id="行内元素">行内元素</h1><h2 id="基本术语">基本术语</h2><ul>
+<li>匿名文本：<code>&lt;p&gt;hello &lt;span&gt; world &lt;/span&gt;have fun!&lt;/p&gt;</code>，序列’hello’和’have fun!’都是匿名文本，注意空格也是匿名文本的一部分。</li>
+<li>em框：em框在字体中定义，也称为字符框。在CSS中，font-size的值确定了各个em框的高度。</li>
+<li>内容区：在非替换元素中，内容区可能有两种。可以是元素中各个字符的em框串在一起构成的框，也可以是由元素中字符描述的框。</li>
+<li>行间距：font-size和line-heigt值之差。</li>
+<li>行内框：这个框通过向内容区增加行间距来描述。对于非替换元素来说，line-height取值就为行内框的高度，但是对于替换元素来说行内框的高度恰好等于内容区的高度。这是因为line-height不应用于替换元素。</li>
+<li>行框：包含改行中出现的行内框的最高点和最低点的最小框。</li>
+</ul>
+<h1 id="未完待续">未完待续</h1>
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/css/">css</a>
+  </div>
+
+        
+        
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+<section id="comment">
+  <h1 class="title">留言</h1>
+  <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="/2015/10/16/css/basicalvisual/" data-title="CSS基本视觉格式化" data-url="http://www.hisimmer.com/2015/10/16/css/basicalvisual/"></div>
+    <!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"simmer"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共JS代码 end -->
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Google一下">
+    <input type="hidden" name="q" value="site:www.hisimmer.com">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/JavaScript/">JavaScript</a><small>9</small></li>
+  
+    <li><a href="/categories/css/">css</a><small>3</small></li>
+  
+    <li><a href="/categories/日记/">日记</a><small>2</small></li>
+  
+    <li><a href="/categories/项目/">项目</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  <div class="friendly-link">
+<h3>码农圈:</h3>
+    <ul>
+        <li><a href="http://zhangwenli.com/blog" title="羡辙杂俎">羡辙杂俎</a></li>
+        <li><a href="http://helen123.gitcafe.io/" title="Bicycle's Blog">Bicycle</a></li>
+        <li><a href="http://www.iyuxy.com/" target="_blank" title="喻小佑's Blog">喻小佑</a></li>
+        <li><a href="http://gaohaoyang.github.io/about/" target="_blank" title="Hyg's Blog">Hyg</a></li>
+        <li><a href="http://www.anotherhome.net/" target="_blank" title="Anotherhome">Anotherhome</a></li>
+        <li><a href="http://halamyc.me/" target="_blank" title="halamyc's blog">HalaMyc</a></li>
+        <li><a href="http://iflsy.com/pgy/" target="_blank" title="彭光宇's blog">彭光宇</a></li>
+        <li><a href="http://www.xheldon.com/" target="_blank" title="Xheldon's blog">Xheldon</a></li>
+        <li><a href="https://ymr.me/" target="_blank" title="ymr's blog">ymr</a></li>
+    </ul> 
+    <p>欢迎交换友链~</p>
+</div>
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="footer"><div class="foot-container">
+    <div class="alignleft alignleft-2">
+     <h2 class="foot-h2">Where to study?</h2>
+     <p ><a href="http://www.w3ctech.com/">w3cTech</a>|<a href="http://www.imooc.com/">imooc</a>|<a href="https://www.github.com/">GitHub</a></p>
+     <p ><a href="http://ued.taobao.org/blog/">淘宝UED</a>|<a href="http://fex.baidu.com/">百度FEX</a></p>
+    </div>
+    <div class="alignleft alignleft-2">
+        <h2 class="foot-h2">Have problem？</h2>
+        <p ><a href="http://stackoverflow.com/">StackOverflow</a>|<a href="http://segmentfault.com/">SegmentFault</a>
+    </div>
+    <div class="alignleft alignleft-2">
+        <h2 class="foot-h2">Focus on</h2>
+        <p ><a href="https://facebook.github.io/react/">React</a>|<a href="https://facebook.github.io/flux/">Flux</a>
+    </div>
+    <div class="foot-foot">
+        
+      <p>由<a href="https://hexo.io" title="hexo">hexo</a>强力驱动 || 感谢<a href="https://gitcafe.com/">GitCafe</a>提供主机</p>
+      <p><span id="busuanzi_container_site_uv">
+      欢迎！第<span id="busuanzi_value_site_uv"></span> 位来访的小伙伴!
+    </span></p>
+    <p>&copy; 2015 Simmer</p>
+      
+    </div>
+    </div>
+    <div class="clearfix"></div>
+    
+</div>
+<div id="go-pg-top" style="display: block; opacity: 0.6;" title="返回顶部"><i class="icon-arrow-up"></i></div>
+</footer>
+  <script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+</body>
+</html>
