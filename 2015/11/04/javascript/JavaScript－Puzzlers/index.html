@@ -1,0 +1,285 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>JavaScript Puzzlers! （javascript难题！） | Hexo</title>
+  <meta name="author" content="John Doe">
+  
+  <meta name="description" content="今天按例刷微博，忽然看到一个关于javascript的测试，试了一下，简直被虐成狗好吧＝＝。因为都是关于javascript的一些语法细节上的，平时很容易忽视，所以把题目贴上来和大家分享一下。">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="JavaScript Puzzlers! （javascript难题！）"/>
+  <meta property="og:site_name" content="Hexo"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/images/favicon.jpg" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div id="header-cont">
+    <div class="alignleft">
+      <h1><a href="http://www.hisimmer.com/">司马</a></h1>
+      <h2><a href="http://www.hisimmer.com/">普通人，只会读书，锻炼，写代码。</a></h2>
+    </div>
+    <nav id="main-nav" class="alignright">
+      <ul>
+        
+          <li><a href="http://www.hisimmer.com/">Home</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+          <li><a href="/archives">Archives</a></li>
+        
+          <li><a href="/2015/03/01/other/work/">作品集</a></li>
+        
+          <li><a href="http://simmer.sinaapp.com/about/index.html">在线简历</a></li>
+        
+          <li><a href="http://simmer-jun.github.io/BKFE/index.html">gitbook</a></li>
+        
+      </ul>
+      <div class="clearfix"></div>
+    </nav>
+    <div class="clearfix"></div>
+</div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <time datetime="2015-11-04T13:00:55.000Z"><a href="/2015/11/04/javascript/JavaScript－Puzzlers/">2015-11-04</a></time>
+      
+      
+  
+    <h1 class="title">JavaScript Puzzlers! （javascript难题！）</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>今天按例刷微博，忽然看到一个关于javascript的测试，试了一下，简直被虐成狗好吧＝＝。<br>因为都是关于javascript的一些语法细节上的，平时很容易忽视，所以把题目贴上来和大家分享一下。<br><a id="more"></a></p>
+<ul>
+<li>注意，原题在<a href="http://javascript-puzzlers.herokuapp.com/" target="_blank" rel="external">这里</a><br>每一道题都传到<a href="http://jsfiddle.net/" target="_blank" rel="external">jsfiddle</a>上了，可以在结果项那里点击查看结果。<br>在开始你的JavaScript8级考试前，整理好你的思绪，enjoy it!</li>
+</ul>
+<h1 id="题目">题目</h1><h2 id="No-1">No.1</h2><p>以下JavaScript表达式的结果是？</p>
+<pre><code>[<span class="string">"1"</span>, <span class="string">"2"</span>, <span class="string">"3"</span>].<span class="function"><span class="title">map</span><span class="params">(parseInt)</span></span>
+</code></pre><iframe width="100%" height="300" src="//jsfiddle.net/Simmerrs/4rhwtpmo/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<p>这是因为数组的<code>map</code>方法传的参数依次为<code>item, index, array</code>(数组的每一项， 每一项的索引， 原数组)，而<code>parseInt</code>方法则只接受2个参数<code>string, radix</code>前一个表示解析的字符串， 后一个表示解析的基数。</p>
+<h2 id="No-2">No.2</h2><p>以下JavaScript表达式的结果是？</p>
+<pre><code>[<span class="keyword">typeof</span> <span class="literal">null</span>, <span class="literal">null</span> <span class="keyword">instanceof</span> <span class="built_in">Object</span>]
+</code></pre><iframe width="100%" height="300" src="//jsfiddle.net/Simmerrs/4rhwtpmo/1/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<p>对于<code>typeof null</code>来讲，始终会返回<code>object</code>，记住就好！</p>
+<h2 id="No-3">No.3</h2><p>以下JavaScript表达式的结果是？</p>
+<pre><code>[ [<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>].reduce(Math.pow), [].reduce(Math.pow) ]
+</code></pre><iframe width="100%" height="300" src="//jsfiddle.net/Simmerrs/4rhwtpmo/2/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<p>未完待续。。。</p>
+<h2 id="No-4">No.4</h2><p>以下JavaScript表达式的结果是？</p>
+<h2 id="No-5">No.5</h2><p>以下JavaScript表达式的结果是？</p>
+<h2 id="No-6">No.6</h2><p>以下JavaScript表达式的结果是？</p>
+<h2 id="No-7">No.7</h2><p>以下JavaScript表达式的结果是？</p>
+<h2 id="No-8">No.8</h2><p>以下JavaScript表达式的结果是？</p>
+<h2 id="No-9">No.9</h2><p>以下JavaScript表达式的结果是？</p>
+<h2 id="No-10">No.10</h2><p>以下JavaScript表达式的结果是？</p>
+<h2 id="No-11">No.11</h2><p>以下JavaScript表达式的结果是？</p>
+<h2 id="No-12">No.12</h2><p>以下JavaScript表达式的结果是？</p>
+<h2 id="No-13">No.13</h2><p>以下JavaScript表达式的结果是？</p>
+<h2 id="No-14">No.14</h2><p>以下JavaScript表达式的结果是？</p>
+<h2 id="No-15">No.15</h2><p>以下JavaScript表达式的结果是？</p>
+<h2 id="No-16">No.16</h2><p>以下JavaScript表达式的结果是？</p>
+<h2 id="No-17">No.17</h2><p>以下JavaScript表达式的结果是？</p>
+<h2 id="No-18">No.18</h2><p>以下JavaScript表达式的结果是？</p>
+<h2 id="No-19">No.19</h2><p>以下JavaScript表达式的结果是？</p>
+<h2 id="No-20">No.20</h2><p>以下JavaScript表达式的结果是？</p>
+<h2 id="No-21">No.21</h2><p>以下JavaScript表达式的结果是？</p>
+<h2 id="No-22">No.22</h2><p>以下JavaScript表达式的结果是？</p>
+<h2 id="No-23">No.23</h2><p>以下JavaScript表达式的结果是？</p>
+<h2 id="No-24">No.24</h2><p>以下JavaScript表达式的结果是？</p>
+<h2 id="No-25">No.25</h2><p>以下JavaScript表达式的结果是？</p>
+<h2 id="No-26">No.26</h2><p>以下JavaScript表达式的结果是？</p>
+<h2 id="No-27">No.27</h2><p>以下JavaScript表达式的结果是？</p>
+<h2 id="No-28">No.28</h2><p>以下JavaScript表达式的结果是？</p>
+<h2 id="No-29">No.29</h2><p>以下JavaScript表达式的结果是？</p>
+<h2 id="No-30">No.30</h2><p>以下JavaScript表达式的结果是？</p>
+<h2 id="No-31">No.31</h2><p>以下JavaScript表达式的结果是？</p>
+<h2 id="No-32">No.32</h2><p>以下JavaScript表达式的结果是？</p>
+<h2 id="No-33">No.33</h2><p>以下JavaScript表达式的结果是？</p>
+<h2 id="No-34">No.34</h2><p>以下JavaScript表达式的结果是？</p>
+<h2 id="No-35">No.35</h2><p>以下JavaScript表达式的结果是？</p>
+<h2 id="No-36">No.36</h2><p>以下JavaScript表达式的结果是？</p>
+<h2 id="No-37">No.37</h2><p>以下JavaScript表达式的结果是？</p>
+<h2 id="No-38">No.38</h2><p>以下JavaScript表达式的结果是？</p>
+<h2 id="No-39">No.39</h2><p>以下JavaScript表达式的结果是？</p>
+<h2 id="No-40">No.40</h2><p>以下JavaScript表达式的结果是？</p>
+<h2 id="No-41">No.41</h2><p>以下JavaScript表达式的结果是？</p>
+<h2 id="No-42">No.42</h2><p>以下JavaScript表达式的结果是？</p>
+<h2 id="No-43">No.43</h2><p>以下JavaScript表达式的结果是？</p>
+<h2 id="No-44">No.44</h2><p>以下JavaScript表达式的结果是？</p>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/JavaScript/">JavaScript</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/JavaScript基础/">JavaScript基础</a>
+  </div>
+
+        
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+<section id="comment">
+  <h1 class="title">留言</h1>
+  <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="/2015/11/04/javascript/JavaScript－Puzzlers/" data-title="JavaScript Puzzlers! （javascript难题！）" data-url="http://yoursite.com/2015/11/04/javascript/JavaScript－Puzzlers/"></div>
+    <!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"simmer"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共JS代码 end -->
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Google一下">
+    <input type="hidden" name="q" value="site:yoursite.com">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/JavaScript/">JavaScript</a><small>10</small></li>
+  
+    <li><a href="/categories/css/">css</a><small>3</small></li>
+  
+    <li><a href="/categories/日记/">日记</a><small>2</small></li>
+  
+    <li><a href="/categories/项目/">项目</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  <div class="friendly-link">
+<h3>码农圈:</h3>
+    <ul>
+        <li><a href="http://zhangwenli.com/blog" title="羡辙杂俎">羡辙杂俎</a></li>
+        <li><a href="http://helen123.gitcafe.io/" title="Bicycle's Blog">Bicycle</a></li>
+        <li><a href="http://www.iyuxy.com/" target="_blank" title="喻小佑's Blog">喻小佑</a></li>
+        <li><a href="http://gaohaoyang.github.io/about/" target="_blank" title="Hyg's Blog">Hyg</a></li>
+        <li><a href="http://www.anotherhome.net/" target="_blank" title="Anotherhome">Anotherhome</a></li>
+        <li><a href="http://halamyc.me/" target="_blank" title="halamyc's blog">HalaMyc</a></li>
+        <li><a href="http://iflsy.com/pgy/" target="_blank" title="彭光宇's blog">彭光宇</a></li>
+        <li><a href="http://www.xheldon.com/" target="_blank" title="Xheldon's blog">Xheldon</a></li>
+        <li><a href="https://ymr.me/" target="_blank" title="ymr's blog">ymr</a></li>
+    </ul> 
+    <p>欢迎交换友链~</p>
+</div>
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="footer"><div class="foot-container">
+    <div class="alignleft alignleft-2">
+     <h2 class="foot-h2">Where to study?</h2>
+     <p ><a href="http://www.w3ctech.com/">w3cTech</a>|<a href="http://www.imooc.com/">imooc</a>|<a href="https://www.github.com/">GitHub</a></p>
+     <p ><a href="http://ued.taobao.org/blog/">淘宝UED</a>|<a href="http://fex.baidu.com/">百度FEX</a></p>
+    </div>
+    <div class="alignleft alignleft-2">
+        <h2 class="foot-h2">Have problem？</h2>
+        <p ><a href="http://stackoverflow.com/">StackOverflow</a>|<a href="http://segmentfault.com/">SegmentFault</a>
+    </div>
+    <div class="alignleft alignleft-2">
+        <h2 class="foot-h2">Focus on</h2>
+        <p ><a href="https://facebook.github.io/react/">React</a>|<a href="http://redux.js.org/">Redux</a>
+        <br />
+        <a href="https://facebook.github.io/react-native/">React Native</a>
+    </div>
+    <div class="foot-foot">
+        
+      <p>由<a href="https://hexo.io" title="hexo">hexo</a>强力驱动 || 感谢<a href="https://gitcafe.com/">GitCafe</a>提供主机</p>
+      <p><span id="busuanzi_container_site_uv">
+      欢迎！第<span id="busuanzi_value_site_uv"></span> 位来访的小伙伴!
+    </span></p>
+    <p>&copy; 2015 Simmer</p>
+      
+    </div>
+    </div>
+    <div class="clearfix"></div>
+    
+</div>
+<div id="go-pg-top" style="display: block; opacity: 0.6;" title="返回顶部"><i class="icon-arrow-up"></i></div>
+</footer>
+  <script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+</body>
+</html>

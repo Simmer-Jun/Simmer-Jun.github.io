@@ -3,23 +3,39 @@
 <head>
   <meta charset="utf-8">
   
-  <title>百度IFE 作业总结： | Simmer</title>
-  <meta name="author" content="Simmer">
+  <title>百度IFE 作业总结： | Hexo</title>
+  <meta name="author" content="John Doe">
   
-  <meta name="description" content="前端工程师-Simmer的博客">
+  <meta name="description" content="关于百度IFE task0001/0002的一些总结导师markfan对我作业的评语:
+
+缩进统一使用4个空格
+title=”logo”吧 图片最好设下宽高，避免加载过程中的页面抖动
+缩进统一4个空格，多个选择器之间换行，参考css编码规范
+公共样式和具体页面样式分开，放在不同的样式文件中，在需要的页面中分别引用
+a 元素里面是img元素的时候，最好给img元素设置 border: none; 否则低版本IE会显示图片边框img元素最好设置 display:block,否则图片下面会有3px留白
+css属性冒号后必须有个空格
+颜色值 格式要统一，例如不要一会 #FFF 一会#FFFFFF
+颜色值格式统一用16进制，用rgba来设置透明度并不是所有浏览器都支持
+IE6 7透明度设置用 progid:DXImageTransform.Microsoft.Alpha(Opacity=xx)
+尽量不要使用id选择器
+尽量不要在元素上使用style属性，css尽量放在 样式文件中
+变量一行定义一个，参考js编码规范
+运算符两边要有一个空格，function关键字后面要有一个空格，左花括号前要有一个空格，参考js编码规范
+while if 等关键字后面要留一个空格，运算符两边要留一个空格， else 条件分支要另起一行
+getElementsByClassName 不是所有浏览器都支持由以上暴露了我的几个问题1 可以看出我对于CSS及JavaScript编码规范还不是很了解，所以我查阅了相关的资料找到了这个,这个还有这个。2 对于css一些基本的hack不了解（主要是兼容低版本IE。mark了一下w3cfuns上面的关于css hack的文章，详情见这里and这里。3 Javascript基础薄弱（需要加强对于基本类型的属性/方法的了解，BOM/DOM操作）4 对于基本的一些布局还不是很掌握（自己觉得）">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   <meta property="og:title" content="百度IFE 作业总结："/>
-  <meta property="og:site_name" content="Simmer"/>
+  <meta property="og:site_name" content="Hexo"/>
 
   
     <meta property="og:image" content="undefined"/>
   
 
   <link href="/images/favicon.jpg" rel="icon">
-  <link rel="alternate" href="/atom.xml" title="Simmer" type="application/atom+xml">
+  <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
   <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   
@@ -179,7 +195,7 @@
 <section id="comment">
   <h1 class="title">留言</h1>
   <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="/2015/05/01/other/may-one/" data-title="百度IFE 作业总结：" data-url="http://www.hisimmer.com/2015/05/01/other/may-one/"></div>
+    <div class="ds-thread" data-thread-key="/2015/05/01/other/may-one/" data-title="百度IFE 作业总结：" data-url="http://yoursite.com/2015/05/01/other/may-one/"></div>
     <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
@@ -201,7 +217,7 @@ var duoshuoQuery = {short_name:"simmer"};
   <div class="search">
   <form action="//google.com/search" method="get" accept-charset="utf-8">
     <input type="search" name="q" results="0" placeholder="Google一下">
-    <input type="hidden" name="q" value="site:www.hisimmer.com">
+    <input type="hidden" name="q" value="site:yoursite.com">
   </form>
 </div>
 
@@ -210,7 +226,7 @@ var duoshuoQuery = {short_name:"simmer"};
   <h3 class="title">分类</h3>
   <ul class="entry">
   
-    <li><a href="/categories/JavaScript/">JavaScript</a><small>9</small></li>
+    <li><a href="/categories/JavaScript/">JavaScript</a><small>10</small></li>
   
     <li><a href="/categories/css/">css</a><small>3</small></li>
   
@@ -252,7 +268,9 @@ var duoshuoQuery = {short_name:"simmer"};
     </div>
     <div class="alignleft alignleft-2">
         <h2 class="foot-h2">Focus on</h2>
-        <p ><a href="https://facebook.github.io/react/">React</a>|<a href="https://facebook.github.io/flux/">Flux</a>
+        <p ><a href="https://facebook.github.io/react/">React</a>|<a href="http://redux.js.org/">Redux</a>
+        <br />
+        <a href="https://facebook.github.io/react-native/">React Native</a>
     </div>
     <div class="foot-foot">
         
