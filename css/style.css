@@ -161,6 +161,9 @@ video {
 * 页面主体架构
 **** construction stylesheey ==>
 */
+* {
+  box-sizing: border-box; }
+
 html {
   color: #2e2e2e;
   background-color: #fefefe;
@@ -174,7 +177,9 @@ body {
   padding-top: 30px; }
 
 .main {
-  width: 800px;
+  position: relative;
+  width: 1000px;
+  padding-right: 200px;
   margin: 0 auto;
   color: #666;
   overflow: hidden; }
@@ -577,8 +582,12 @@ pre .javascript .function {
     line-height: 1.6;
     margin: 10px 0;
     font-weight: bold; }
-  .post h2, .post h3 {
+  .post h1 {
     font-size: 22px; }
+  .post h2 {
+    font-size: 20px; }
+  .post h3 {
+    font-size: 18px; }
   .post h4, .post h5, .post h6 {
     font-size: 18px; }
   .post a {
@@ -641,6 +650,42 @@ pre .javascript .function {
     margin-left: 10px;
     float: left; }
 
+/* 
+*** blog 文章页新增加目录
+*/
+.post-content .toc {
+  position: fixed;
+  left: 50%;
+  top: 30px;
+  bottom: 100px;
+  margin-left: 350px;
+  width: 200px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  color: #de908e; }
+  .post-content .toc > ul {
+    padding: 10px 0 10px 10px;
+    width: 100%; }
+    .post-content .toc > ul > li {
+      list-style-type: none; }
+    .post-content .toc > ul ul {
+      padding: 4px 0 4px 15px; }
+    .post-content .toc > ul a {
+      display: block;
+      width: 100%;
+      height: 100%;
+      font-size: 16px;
+      line-height: 28px;
+      color: #00375b; }
+      .post-content .toc > ul a:hover {
+        color: #de908e; }
+    .post-content .toc > ul ul li a {
+      font-size: 14px;
+      line-height: 1.2; }
+
+.header-anchor {
+  display: none; }
+
 /*
 ***** archives ==>
 */
@@ -654,17 +699,33 @@ pre .javascript .function {
 /*
 ****** 响应式布局==>
 */
+@media screen and (max-width: 1200px) {
+  .main {
+    width: 800px; }
+  .post-content .toc {
+    margin-left: 250px; } }
+
 @media screen and (max-width: 900px) {
   .main {
-    width: 600px; } }
+    width: 600px; }
+  .post-content .toc {
+    margin-left: 150px; } }
 
 @media screen and (max-width: 680px) {
   .main {
-    width: 420px; }
+    width: 520px;
+    padding: 0; }
   .content {
     min-height: 500px; }
   .tag-bd, .categorys-bd {
-    min-height: 500px; } }
+    min-height: 500px; }
+  .post-content .toc {
+    position: static;
+    margin-left: 0;
+    width: 100%; }
+    .post-content .toc ul {
+      padding: 10px 0;
+      width: 100%; } }
 
 @media screen and (min-width: 360px) and (max-width: 480px) {
   .wraper {
