@@ -4,7 +4,7 @@
 * author simmer  2016/7/24
 */
 a {
-  color: #2e2e2e; }
+  color: #00375b; }
 
 /**
 * @name		reset样式
@@ -101,7 +101,8 @@ input::-ms-clear, input::-ms-reveal {
 
 html {
   -ms-touch-action: manipulation;
-  touch-action: manipulation; }
+  touch-action: manipulation;
+  font-family: 'sourcesanspro', 'Helvetica Neue', Arial, sans-serif; }
 
 input {
   box-shadow: none; }
@@ -268,7 +269,7 @@ body {
   z-index: 999; }
   #go-pg-top:hover {
     color: #fff;
-    background-color: #262a30; }
+    background-color: #484848; }
 
 /*
 **** nav stylesheet==>
@@ -385,9 +386,10 @@ body {
   font-family: "Source Code Pro", Consolas, Monaco, Menlo, Consolas, monospace; }
 
 .main code {
-  background: #fafafa;
-  text-shadow: 0 1px #fff;
-  padding: 0 0.3em; }
+  background: #f8f8f8;
+  padding: 0 0.3em;
+  color: #e96900;
+  margin: 0 1px; }
 
 .main pre {
   background: none; }
@@ -570,7 +572,7 @@ pre .javascript .function {
   margin: 10px auto 30px auto;
   font-size: 14px;
   line-height: 2;
-  color: #262a30; }
+  color: #484848; }
   .post a {
     transition: color .4s; }
   .post a:hover {
@@ -591,7 +593,7 @@ pre .javascript .function {
   .post h4, .post h5, .post h6 {
     font-size: 18px; }
   .post a {
-    color: #de908e; }
+    color: #42b983; }
   .post blockquote {
     margin: 1em 0;
     padding: 1em 0 1em 20px;
@@ -599,8 +601,7 @@ pre .javascript .function {
     background-color: #f3f3f3; }
   .post img {
     display: block;
-    width: 100%;
-    margin: 1em auto; }
+    width: auto; }
   .post article {
     padding-bottom: 30px;
     border-bottom: 1px solid #f0f0f0; }
@@ -609,7 +610,7 @@ pre .javascript .function {
     padding-left: 20px; }
     .post ul li {
       list-style-type: disc;
-      color: #262a30; }
+      color: #484848; }
   .post ol {
     padding-left: 20px;
     background-color: #fafafa; }
@@ -640,7 +641,7 @@ pre .javascript .function {
     padding-bottom: 20px; }
     .post .post-subtitle .post-date {
       font-size: 14px;
-      color: #262a30;
+      color: #484848;
       float: left;
       margin: 0; }
     .post .post-subtitle .icon {
@@ -649,6 +650,8 @@ pre .javascript .function {
   .post .post-tag {
     margin-left: 10px;
     float: left; }
+    .post .post-tag a {
+      color: #de908e; }
 
 /* 
 *** blog 文章页新增加目录
