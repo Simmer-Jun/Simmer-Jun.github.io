@@ -786,6 +786,8 @@ pre .javascript .function {
       height: 60px; }
   .main {
     width: 100%; }
+    .main .photoPost {
+      margin-right: 0; }
   .content {
     min-height: 420px; }
   .tag-bd, .categorys-bd {
@@ -828,6 +830,8 @@ pre .javascript .function {
       padding: 0; }
   .main {
     width: 100%; }
+    .main .photoPost {
+      margin-right: 0; }
   .content {
     min-height: 400px; }
   .tag-bd, .categorys-bd {
