@@ -570,7 +570,7 @@ pre .javascript .function {
 */
 .post {
   margin: 10px auto 30px auto;
-  font-size: 14px;
+  font-size: 18px;
   line-height: 2;
   color: #484848; }
   .post a {
@@ -585,11 +585,11 @@ pre .javascript .function {
     margin: 10px 0;
     font-weight: bold; }
   .post h1 {
-    font-size: 22px; }
+    font-size: 24px; }
   .post h2 {
-    font-size: 20px; }
+    font-size: 22px; }
   .post h3 {
-    font-size: 18px; }
+    font-size: 21px; }
   .post h4, .post h5, .post h6 {
     font-size: 18px; }
   .post a {
@@ -601,7 +601,9 @@ pre .javascript .function {
     background-color: #f3f3f3; }
   .post img {
     display: block;
-    width: auto; }
+    width: 100%;
+    max-width: 800px;
+    margin: 10px auto; }
   .post article {
     padding-bottom: 30px;
     border-bottom: 1px solid #f0f0f0; }
@@ -652,11 +654,16 @@ pre .javascript .function {
     float: left; }
     .post .post-tag a {
       color: #de908e; }
+  .post .imgTips {
+    font-size: 14px;
+    text-align: center;
+    color: #666;
+    padding-bottom: 10px; }
 
 /* 
 *** blog 文章页新增加目录
 */
-.post-content .toc {
+.main .toc {
   position: fixed;
   left: 50%;
   top: 30px;
@@ -666,23 +673,23 @@ pre .javascript .function {
   overflow-x: hidden;
   overflow-y: auto;
   color: #de908e; }
-  .post-content .toc > ul {
+  .main .toc > ul {
     padding: 10px 0 10px 10px;
     width: 100%; }
-    .post-content .toc > ul > li {
+    .main .toc > ul > li {
       list-style-type: none; }
-    .post-content .toc > ul ul {
+    .main .toc > ul ul {
       padding: 4px 0 4px 15px; }
-    .post-content .toc > ul a {
+    .main .toc > ul a {
       display: block;
       width: 100%;
       height: 100%;
       font-size: 16px;
       line-height: 28px;
       color: #00375b; }
-      .post-content .toc > ul a:hover {
+      .main .toc > ul a:hover {
         color: #de908e; }
-    .post-content .toc > ul ul li a {
+    .main .toc > ul ul li a {
       font-size: 14px;
       line-height: 1.2; }
 
@@ -697,6 +704,25 @@ pre .javascript .function {
 
 .archive-bd .icon {
   margin-right: 10px; }
+
+.photoPost {
+  font-size: 16px;
+  margin-right: -200px; }
+  .photoPost p {
+    text-indent: 2em; }
+  .photoPost .seeMoreWraper {
+    margin-top: 10px;
+    text-align: center; }
+  .photoPost .seeMore {
+    display: inline-block;
+    padding: 0px 12px;
+    background-color: #666;
+    color: #fff;
+    transition: background-color .5s;
+    border-radius: 4px; }
+    .photoPost .seeMore:hover {
+      background-color: #000;
+      color: #fff; }
 
 /* 响应式布局样式放在最后，便于样式的覆写*/
 /*
