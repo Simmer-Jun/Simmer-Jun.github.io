@@ -1,3 +1,4 @@
+var start = '1476403200000';
 window.onload = function() {
     var navBtn = $('#nav-btn');
     navBtn.click(function(){
