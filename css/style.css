@@ -79,7 +79,8 @@ html {
   font-size: 100%; }
 
 body {
-  background: #fff; }
+  background: #fff;
+  line-height: 1.6; }
 
 input::-ms-clear, input::-ms-reveal {
   display: none; }
@@ -95,6 +96,9 @@ input::-ms-clear, input::-ms-reveal {
   -ms-text-size-adjust: 100%;
   text-size-adjust: 100%;
   -webkit-tap-highlight-color: transparent; }
+
+a {
+  color: #42b983; }
 
 * {
   box-sizing: border-box; }
@@ -550,21 +554,29 @@ pre .javascript .function {
   .post-item .item-hd {
     margin: 10px 0; }
     .post-item .item-hd .post-cover-img {
-      width: 100%;
-      height: 300px;
-      background-size: cover; }
+      width: 100%; }
   .post-item .item-ct {
     min-height: 160px;
     overflow: hidden; }
+    .post-item .item-ct .ct-inner {
+      text-indent: 2em; }
+    .post-item .item-ct h1, .post-item .item-ct h2, .post-item .item-ct h3, .post-item .item-ct h4, .post-item .item-ct h5 {
+      text-indent: 0; }
+    .post-item .item-ct h2 {
+      font-size: 18px; }
+    .post-item .item-ct h3 {
+      font-size: 17px; }
+    .post-item .item-ct h4 {
+      font-size: 16px; }
     .post-item .item-ct .item-title {
-      font-size: 20px;
       margin: 4px 0 6px 0;
       padding-left: 10px;
-      border-left: 3px solid #c7254e; }
+      border-left: 3px solid #42b983;
+      line-height: 1.5;
+      font-size: 20px; }
       .post-item .item-ct .item-title a {
         color: #34495e; }
     .post-item .item-ct .post-date {
-      color: #009a61;
       margin-bottom: 6px; }
       .post-item .item-ct .post-date .date-in {
         padding-left: 10px; }
@@ -728,7 +740,9 @@ pre .javascript .function {
   width: 100%; }
   .archive-bd .post-item {
     padding: 0 0 0 15px;
+    margin: 15px;
     border-radius: 0;
+    border: none;
     border-left: 2px solid #34495e; }
 
 .archive-bd .icon {
