@@ -103,6 +103,9 @@ a {
 * {
   box-sizing: border-box; }
 
+img {
+  width: 100%; }
+
 html {
   -ms-touch-action: manipulation;
   touch-action: manipulation;
